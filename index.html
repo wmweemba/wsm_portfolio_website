@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>William Mweemba | Kinetic Portfolio</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-circle" id="cursor-circle"></div>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <nav class="hud-switch">
+        <div class="switch-btn active" id="btn-tech" onmouseenter="hoverEffect(true)" onmouseleave="hoverEffect(false)">[01] Technical</div>
+        <div class="switch-btn" id="btn-creative" onmouseenter="hoverEffect(true)" onmouseleave="hoverEffect(false)">[02] Creative</div>
+    </nav>
+
+    <main>
+        <header>
+            <span class="pre-title">Frontend Architect & ICT Lead</span>
+            <h1 class="hero-title" onmouseenter="hoverEffect(true)" onmouseleave="hoverEffect(false)">
+                <span>William</span>
+                <span>Mweemba</span>
+            </h1>
+            
+            <div class="role-scroller">
+                <div id="scroller-content">
+                    <p>Building Digital Infrastructure</p>
+                    <p>Scalable MERN Architectures</p>
+                    <p>Strategic Banking Systems</p>
+                    <p>Mindful Entrepreneurship</p>
+                    <p>Building Digital Infrastructure</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="grid-section">
+            <div class="grid-label">Selected Works</div>
+            <div class="grid-content" id="work-container">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <footer>
+            <span class="pre-title">Next Steps</span>
+            <a href="mailto:wmweemba@gmail.com" id="contact-trigger" onclick="copyEmail(event)">
+                <h2 class="big-link" id="contact-text" onmouseenter="hoverEffect(true)" onmouseleave="hoverEffect(false)">Let's Build<br>The Future.</h2>
+            </a>
+        </footer>
+    </main>
+
+    <!-- MODAL ELEMENTS -->
+    <div class="modal-backdrop" id="modal-backdrop" onclick="closeProject()"></div>
+    <aside id="project-modal" class="project-modal">
+        <div class="close-btn" onclick="closeProject()" onmouseenter="hoverEffect(true)" onmouseleave="hoverEffect(false)">×</div>
+        <div class="modal-content-wrapper">
+            <h2 class="modal-title" id="m-title">Project Title</h2>
+            <div class="modal-tags" id="m-tags">
+                <span>[Tag 1]</span> <span>[Tag 2]</span>
+            </div>
+            <div class="modal-image-placeholder">
+                // PROJECT_ASSET_LOADED //
+            </div>
+            <div class="modal-body" id="m-body">
+                Project details go here...
+            </div>
+        </div>
+    </aside>
+
+    <script defer src="src/js/physics.js"></script>
+    <script defer src="src/js/app.js"></script>
+</body>
+</html>

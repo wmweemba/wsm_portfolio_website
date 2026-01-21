@@ -1,0 +1,18 @@
+{
+  "name": "wsm_portfolio_website",
+  "version": "1.0.0",
+  "description": "The Kinetic Architect - William Mweemba Portfolio Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --entry-file=index.html",
+    "start": "live-server --port=3000 --entry-file=index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["portfolio", "kinetic", "canvas", "physics"],
+  "author": "William Mweemba",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
