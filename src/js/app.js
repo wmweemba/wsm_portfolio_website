@@ -8,131 +8,133 @@ let currentMode = 'technical'; // Track mode for modal logic
 // --- DATA & CONTENT LOGIC ---
 const data = {
     technical: {
+        about: "Results-driven ICT professional with 12+ years experience in managing banking infrastructure, enforcing ISO 27001 compliance, and leading digital transformation.",
         scroller: `
             <p>Head of ICT</p>
-            <p>Full-Stack Certified</p>
-            <p>Network Operations</p>
+            <p>Network Architecture</p>
             <p>Digital Finance</p>
+            <p>Full-Stack Dev</p>
             <p>Head of ICT</p>
         `,
         items: [
             { 
                 title: "Head of ICT", 
                 company: "Financial Institution",
-                tags: ["[Strategic Leadership]", "[Cyber Security]", "[Core Banking]"], 
-                desc: "Leading enterprise digital transformation and core banking system changeovers. Developing disaster recovery policies and managing large-scale server environments.",
+                tags: ["[Banking Systems]", "[ISO 27001]", "[High Availability]"], 
+                desc: "Leading enterprise digital transformation, Core Banking Migrations, and Disaster Recovery protocols.",
                 longDesc: `
-                    <p>As Head of ICT, I oversee the strategic and operational technology requirements for a major financial institution.</p>
+                    <p>Strategic leadership over banking infrastructure and policy.</p>
                     <ul>
-                        <li><strong>Core Banking Migration:</strong> Orchestrated the migration of the Core Banking System, ensuring zero data loss and minimizing downtime to under 4 hours during the switchover.</li>
-                        <li><strong>Policy Development:</strong> Developed and enforced comprehensive ICT security policies aligned with ISO 27001 standards to mitigate risk.</li>
-                        <li><strong>Infrastructure:</strong> Managing a hybrid server environment supporting 50+ branches, ensuring high availability and redundancy.</li>
-                        <li><strong>Budgeting:</strong> Reduced operational IT costs by 15% through strategic vendor negotiations and cloud resource optimization.</li>
+                        <li><strong>Core Banking Migration:</strong> Orchestrated end-to-end migration with zero data loss and <4hr downtime.</li>
+                        <li><strong>Infrastructure:</strong> Managed hybrid server environments for 50+ branches with 99% service availability.</li>
+                        <li><strong>Cost Reduction:</strong> Reduced operational IT costs by 15% through virtualization and vendor negotiation.</li>
                     </ul>
                 `
             },
             { 
                 title: "Network Operations", 
                 company: "Africonnect",
-                tags: ["[ISP Infrastructure]", "[Cisco]", "[99.9% Uptime]"], 
-                desc: "Managed critical ISP infrastructure for enterprise clients. Expert in routing, switching, and maintaining high-availability networks.",
+                tags: ["[ISP Infrastructure]", "[Cisco/Huawei]", "[Routing]"], 
+                desc: "Managed Tier-1 ISP infrastructure, ensuring 99.9% uptime for critical enterprise banking clients.",
                 longDesc: `
-                    <p>Ensured the stability and performance of a Tier-1 ISP network serving enterprise clients across Zambia.</p>
+                    <p>Ensuring stability for a Tier-1 ISP network.</p>
                     <ul>
-                        <li><strong>Network Architecture:</strong> Configured and maintained core Cisco routers and switches for optimal data flow.</li>
-                        <li><strong>Uptime Guarantee:</strong> Maintained a 99.9% uptime SLA for critical banking and government clients.</li>
-                        <li><strong>Troubleshooting:</strong> Led the rapid response team for network outages, reducing mean time to repair (MTTR) by 30%.</li>
+                        <li><strong>Uptime Mastery:</strong> Maintained 99.9% uptime SLA for banking and government clients.</li>
+                        <li><strong>Incident Response:</strong> Led rapid response teams, reducing Mean Time To Repair (MTTR) by 30%.</li>
+                        <li><strong>Architecture:</strong> Configured core switching/routing for optimal data flow (Cisco/Huawei).</li>
                     </ul>
                 `
             },
             { 
-                title: "Full-Stack Certified", 
-                company: "MERN Stack",
-                tags: ["[MongoDB]", "[React]", "[Node.js]", "[Python]"], 
-                desc: "Certified Full-Stack Developer bridging the gap between legacy banking hardware and modern, scalable web architecture.",
+                title: "Full-Stack Engineer", 
+                company: "MERN Stack Certified",
+                tags: ["[React]", "[Node.js]", "[Python]", "[Automation]"], 
+                desc: "Bridging legacy banking hardware with modern web architecture using MERN stack and Python automation.",
                 longDesc: `
-                    <p>Combining infrastructure knowledge with modern software development to build scalable internal tools.</p>
+                    <p>Certified Full-Stack Developer (Emurgo).</p>
                     <ul>
-                        <li><strong>Stack Proficiency:</strong> Expert in MongoDB, Express.js, React, and Node.js.</li>
-                        <li><strong>API Development:</strong> Designed RESTful APIs to expose legacy banking data to modern frontend dashboards.</li>
-                        <li><strong>Automation:</strong> Wrote Python scripts to automate daily server health checks and reporting.</li>
+                        <li><strong>Modernization:</strong> Building RESTful APIs to expose legacy banking data to modern front-end dashboards.</li>
+                        <li><strong>Automation:</strong> Python scripting for daily server health checks and automated reporting.</li>
+                        <li><strong>Stack:</strong> MongoDB, Express, React, Node.js.</li>
                     </ul>
                 `
             },
             { 
                 title: "Digital Finance", 
-                company: "Certifications",
-                tags: ["[Digital Money]", "[Mobile Ops]", "[DFI]"], 
-                desc: "Certified Digital Finance Practitioner with expertise in mobile money operations and digital financial ecosystems.",
+                company: "CDFP Certified",
+                tags: ["[Fintech]", "[Mobile Money]", "[Payment Gateways]"], 
+                desc: "Certified Digital Finance Practitioner specializing in mobile money ecosystems and DFS policy.",
                 longDesc: `
-                    <p>Certified Digital Finance Practitioner (CDFP) focusing on the intersection of technology and financial inclusion.</p>
+                    <p>Expertise in the intersection of technology and financial inclusion.</p>
                     <ul>
-                        <li><strong>Ecosystem Analysis:</strong> Mapping digital financial ecosystems to identify gaps in service delivery.</li>
-                        <li><strong>Mobile Money:</strong> Deep understanding of USSD gateways and mobile money integration standards.</li>
+                        <li><strong>Ecosystem Mapping:</strong> Analyzing gaps in digital service delivery for unbanked populations.</li>
+                        <li><strong>Integration:</strong> Deep knowledge of USSD gateways and Mobile Money API standards.</li>
                     </ul>
                 `
             }
         ]
     },
     creative: {
+        about: "A creative entrepreneur bridging the gap between rigid technology and organic storytelling. Believer in sustainable hustle.",
         scroller: `
             <p>The Mindful Hustler</p>
-            <p>Founder & Creator</p>
             <p>Organic Growth</p>
             <p>Digital Strategy</p>
+            <p>Brand Builder</p>
             <p>The Mindful Hustler</p>
         `,
         items: [
             { 
                 title: "The Mindful Hustler", 
-                company: "Author / Philosophy",
-                tags: ["eBook", "Energy Management"], 
-                desc: "Author of 'Balancing Ambition and Well-Being'. A guide for high-tech professionals to manage energy, not just time.",
+                company: "Author & Philosophy",
+                tags: ["[Book]", "[Energy Management]", "[Flow State]"], 
+                desc: "Author of 'Balancing Ambition and Well-Being'. A philosophy for high-performance without burnout.",
                 longDesc: `
-                    <p>A philosophy and eBook written for the modern professional who feels the burnout of the "hustle culture."</p>
+                    <p>A guide for the modern professional.</p>
                     <ul>
-                        <li><strong>The 90-Minute Flow Cycle:</strong> Introduces a productivity technique based on ultradian rhythms, advocating for intense work sprints followed by genuine rest.</li>
-                        <li><strong>Energy vs. Time:</strong> The book argues that energy management supersedes time management for high-performance creative work.</li>
-                        <li><strong>Mindfulness:</strong> Practical meditation techniques adapted for busy corporate environments.</li>
+                        <li><strong>Ultradian Rhythms:</strong> Implementing the 90-minute flow cycle for peak creative output.</li>
+                        <li><strong>Philosophy:</strong> Arguing that 'Energy Management' supersedes 'Time Management' for creators.</li>
+                        <li><strong>Outcome:</strong> A framework for sustainable ambition in a high-pressure world.</li>
                     </ul>
                 `
             },
             { 
                 title: "Mfumu Grooming", 
                 company: "Founder",
-                tags: ["eCommerce", "Organic Product"], 
-                desc: "Created and scaled a premium organic beard oil brand (Sweet Almond & Peppermint) to retail in 5 independent beauty outlets.",
+                tags: ["[eCommerce]", "[Organic]", "[Product Design]"], 
+                desc: "Created and scaled a premium organic beard oil brand (Sweet Almond & Peppermint) to 5 retail outlets.",
                 longDesc: `
-                    <p>Mfumu Grooming represents the "Hustler" spirit—creating a tangible product from scratch.</p>
+                    <p>Tangible product creation from zero to retail.</p>
                     <ul>
-                        <li><strong>Ingredients:</strong> Handcrafted using premium cold-pressed Sweet Almond Oil and organic Peppermint essential oils. The blend promotes beard growth and skin health.</li>
-                        <li><strong>Retail Expansion:</strong> Successfully negotiated shelf space in 5 major independent beauty outlets across Lusaka.</li>
-                        <li><strong>Growth:</strong> Achieved a 40% Month-over-Month sales growth in Q1 2024 through social media marketing.</li>
+                        <li><strong>Formulation:</strong> Hand-crafted blend using Cold-Pressed Sweet Almond Oil and Organic Peppermint.</li>
+                        <li><strong>Growth:</strong> Achieved 40% MoM sales growth in Q1 via social commerce.</li>
+                        <li><strong>Retail:</strong> Negotiated shelf space in 5 independent beauty outlets in Lusaka.</li>
                     </ul>
                 `
             },
             { 
                 title: "Digital Strategy", 
-                company: "Freelance",
-                tags: ["Google Ads", "SEO", "Growth"], 
-                desc: "Google Certified in Display & Video Ads. Helping small businesses dominate local search and optimize ad spend.",
+                company: "Google Certified",
+                tags: ["[Google Ads]", "[SEO]", "[Video Marketing]"], 
+                desc: "Data-driven growth strategies. Certified in Google Display & Video Ads to maximize ROAS.",
                 longDesc: `
-                    <p>Helping local SMEs navigate the digital landscape.</p>
+                    <p>Helping SMEs dominate local search.</p>
                     <ul>
-                        <li><strong>SEO:</strong> Optimizing Google Business Profiles to dominate local "near me" searches.</li>
-                        <li><strong>Ad Spend:</strong> Managing monthly ad budgets with a focus on high ROAS (Return on Ad Spend).</li>
+                        <li><strong>Google Ads:</strong> Certified specialist in Display and Video campaigns for high-intent targeting.</li>
+                        <li><strong>Local SEO:</strong> Optimizing Google Business Profiles to capture 'Near Me' search traffic.</li>
+                        <li><strong>Analytics:</strong> Translating raw data into actionable marketing pivots.</li>
                     </ul>
                 `
             },
             { 
                 title: "Billu Publishing", 
-                company: "Content Creation",
-                tags: ["Self-Publishing", "Creator Economy"], 
-                desc: "A platform for sharing the 'Swiss Army Knife' philosophy of diversifying skills and income streams.",
+                company: "Content Platform",
+                tags: ["[Creator Economy]", "[Storytelling]"], 
+                desc: "A platform sharing the 'Swiss Army Knife' philosophy of skill diversification.",
                 longDesc: `
-                    <p>My personal platform for content creation.</p>
+                    <p>Advocating for the polymath professional.</p>
                     <ul>
-                        <li><strong>Philosophy:</strong> Promoting the idea that modern professionals should be "Swiss Army Knives"—versatile, adaptable, and skilled in multiple domains.</li>
+                        <li><strong>Concept:</strong> Promoting the idea that modern leaders must be versatile—technical yet creative, logical yet empathetic.</li>
                     </ul>
                 `
             }
@@ -264,6 +266,11 @@ function renderContent(mode) {
             console.log(`✅ Rendered ${d.items.length} project items for ${mode} mode`);
         }, 300);
     }
+    
+    // 4. Hook for Physics Engine
+    if (window.updatePhysicsEngine) {
+        window.updatePhysicsEngine(mode);
+    }
 }
 
 // --- MODAL LOGIC ---
@@ -287,6 +294,20 @@ window.closeProject = function() {
     modal.classList.remove('active');
     backdrop.classList.remove('active');
     document.body.classList.remove('no-scroll');
+}
+
+window.openAboutModal = function() {
+    const aboutContent = data[currentMode].about;
+    
+    // Populate Modal with About Content
+    mTitle.innerText = currentMode === 'technical' ? 'Technical Background' : 'Creative Philosophy';
+    mTags.innerHTML = currentMode === 'technical' ? '<span>[Professional]</span>' : '<span>[Creative]</span>';
+    mBody.innerHTML = `<p>${aboutContent}</p>`;
+    
+    // Show Modal
+    modal.classList.add('active');
+    backdrop.classList.add('active');
+    document.body.classList.add('no-scroll');
 }
 
 // --- FOOTER CONTACT LOGIC ---

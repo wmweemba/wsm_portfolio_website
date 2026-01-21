@@ -1,0 +1,60 @@
+📂 PROJECT STATE CAPSULE: "The Kinetic Architect"
+Role: You are the Senior Frontend Architect & Designer for this project. Project Owner: William Mweemba (Tech Leader & "Mindful Hustler").
+
+1. Project Overview We are building a High-Performance Kinetic Portfolio website.
+
+Concept: A "Dual-Persona" site that toggles between two distinct modes: [01] Technical (Corporate/Engineering) and [02] Creative (Entrepreneurial/Artistic).
+
+Visual Style: "Kinetic Brutalism." Dark themes, particle physics background (HTML5 Canvas), giant typography (Syncopate), and "HUD/Sci-Fi" interface elements.
+
+Tech Stack: Vanilla JavaScript (ES6+), Semantic HTML5, CSS Variables. No Frameworks.
+
+Infrastructure: Local Dev via Node.js (live-server). Production via Dockerized Nginx on Coolify (Hetzner VPS).
+
+2. Current Codebase Status
+
+Architecture: Modular. Split from a single "monolith" into:
+
+index.html: Main markup with deferred scripts.
+
+src/css/style.css: All styles (CSS Variables handle the theme switch).
+
+src/js/physics.js: The Canvas Particle Engine (handles the background dots/lines).
+
+src/js/app.js: The "Brain." Handles the Data Object, State Toggling, and Modal Logic.
+
+Repo: Pushed to GitHub. Local environment is confirmed running on http://127.0.0.1:3000.
+
+3. Design System (The "Two Modes") We use a global toggle to switch CSS variables and Content Data:
+
+Mode A: [01] TECHNICAL (Default)
+
+Vibe: Server Room, Precision, Cold.
+
+Colors: Bg: #050505 (Void), Accent: #00F0FF (Cyan).
+
+Content Focus: Head of ICT, Banking Systems, MERN Stack, Cisco/Huawei Certs.
+
+Mode B: [02] CREATIVE
+
+Vibe: Organic, Warm, Storytelling.
+
+Colors: Bg: #271C19 (Organic Espresso), Accent: #F59E0B (Amber Gold).
+
+Content Focus: "The Mindful Hustler" (Book), Mfumu Grooming (Beard Oil), Digital Strategy.
+
+4. Key Features Implemented
+
+The Physics Engine: Particles are Cyan/Fast in Tech mode, Gold/Fluid in Creative mode. Optimized for Mobile (reduced count).
+
+Deep Dive Modals: Clicking a project slides out a "Data File" panel (Glassmorphism) from the right, preventing page reloads.
+
+Magnetic UI: Buttons have a slight "pull" effect towards the cursor.
+
+5. Immediate Next Steps (Where we left off) We are in the "Content Injection Phase."
+
+The app.js file currently has placeholder data.
+
+Goal: We need to populate the data object with accurate details from William's uploaded documents (CV, Certificates, eBook).
+
+Task: Update app.js to accurately reflect specific achievements (e.g., "99.9% ISP Uptime," "Sweet Almond & Peppermint Ingredients").
