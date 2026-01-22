@@ -8,7 +8,7 @@ let currentMode = 'technical'; // Track mode for modal logic
 // --- DATA & CONTENT LOGIC ---
 const data = {
     technical: {
-        about: "Results-driven ICT professional with 12+ years experience in managing banking infrastructure, enforcing ISO 27001 compliance, and leading digital transformation.",
+        about: "Results-driven ICT professional with 12+ years experience in managing banking infrastructure, enforcing industry compliance, and leading digital transformation.",
         scroller: `
             <p>Head of ICT</p>
             <p>Network Architecture</p>
@@ -20,14 +20,15 @@ const data = {
             { 
                 title: "Head of ICT", 
                 company: "Financial Institution",
-                tags: ["[Banking Systems]", "[ISO 27001]", "[High Availability]"], 
+                tags: ["[Banking Systems]", "[ITIL ITSM]", "[High Availability]"], 
                 desc: "Leading enterprise digital transformation, Core Banking Migrations, and Disaster Recovery protocols.",
                 longDesc: `
                     <p>Strategic leadership over banking infrastructure and policy.</p>
                     <ul>
-                        <li><strong>Core Banking Migration:</strong> Orchestrated end-to-end migration with zero data loss and <4hr downtime.</li>
-                        <li><strong>Infrastructure:</strong> Managed hybrid server environments for 50+ branches with 99% service availability.</li>
-                        <li><strong>Cost Reduction:</strong> Reduced operational IT costs by 15% through virtualization and vendor negotiation.</li>
+                        <li><strong>Core Banking Migration:</strong> Orchestrated end-to-end migration with zero data loss and minimal downtime.</li>
+                        <li><strong>Infrastructure:</strong> Managed hybrid server environments servicing 30+ branches with over 95% service availability.</li>
+                        <li><strong>Cost Reduction:</strong> Reduced operational IT costs by 15% through innovative solutions and vendor negotiation.</li>
+                        <li><strong>Governance & Policy:</strong> Authored and implemented enduring enterprise policies (including Disaster Recovery & Data Protection) that continue to govern daily operations.</li>
                     </ul>
                 `
             },
@@ -35,12 +36,12 @@ const data = {
                 title: "Network Operations", 
                 company: "Africonnect",
                 tags: ["[ISP Infrastructure]", "[Cisco/Huawei]", "[Routing]"], 
-                desc: "Managed Tier-1 ISP infrastructure, ensuring 99.9% uptime for critical enterprise banking clients.",
+                desc: "Served on team that managed Tier-1 ISP infrastructure, ensuring 99% uptime for critical enterprise clients.",
                 longDesc: `
                     <p>Ensuring stability for a Tier-1 ISP network.</p>
                     <ul>
-                        <li><strong>Uptime Mastery:</strong> Maintained 99.9% uptime SLA for banking and government clients.</li>
-                        <li><strong>Incident Response:</strong> Led rapid response teams, reducing Mean Time To Repair (MTTR) by 30%.</li>
+                        <li><strong>Uptime Mastery:</strong> Searved on teams that maintained 99.9% uptime SLA for banking and government clients.</li>
+                        <li><strong>Incident Response:</strong> Led contact center teams, reducing Mean Time To Repair (MTTR) by 30%.</li>
                         <li><strong>Architecture:</strong> Configured core switching/routing for optimal data flow (Cisco/Huawei).</li>
                     </ul>
                 `
@@ -48,13 +49,13 @@ const data = {
             { 
                 title: "Full-Stack Engineer", 
                 company: "MERN Stack Certified",
-                tags: ["[React]", "[Node.js]", "[Python]", "[Automation]"], 
-                desc: "Bridging legacy banking hardware with modern web architecture using MERN stack and Python automation.",
+                tags: ["[React]", "[Node.js]", "[Python]", "[API Development]"], 
+                desc: "Bridging legacy systems with modern web architecture using MERN stack tools and frameworks.",
                 longDesc: `
-                    <p>Certified Full-Stack Developer (Emurgo).</p>
+                    <p>Certified Full-Stack Developer (MERN).</p>
                     <ul>
-                        <li><strong>Modernization:</strong> Building RESTful APIs to expose legacy banking data to modern front-end dashboards.</li>
-                        <li><strong>Automation:</strong> Python scripting for daily server health checks and automated reporting.</li>
+                        <li><strong>Modernization:</strong> Building RESTful APIs to expose legacy systems to modern front-end dashboards.</li>
+                        <li><strong>Monitoring:</strong> Python scripting for network monitoring, health checks and reporting.</li>
                         <li><strong>Stack:</strong> MongoDB, Express, React, Node.js.</li>
                     </ul>
                 `
@@ -78,7 +79,7 @@ const data = {
         about: "A creative entrepreneur bridging the gap between rigid technology and organic storytelling. Believer in sustainable hustle.",
         scroller: `
             <p>The Mindful Hustler</p>
-            <p>Organic Growth</p>
+            <p>Organic Skin Care</p>
             <p>Digital Strategy</p>
             <p>Brand Builder</p>
             <p>The Mindful Hustler</p>
@@ -88,7 +89,7 @@ const data = {
                 title: "The Mindful Hustler", 
                 company: "Author & Philosophy",
                 tags: ["[Book]", "[Energy Management]", "[Flow State]"], 
-                desc: "Author of 'Balancing Ambition and Well-Being'. A philosophy for high-performance without burnout.",
+                desc: "Author of 'The Mindful Hustler - Balancing Ambition and Well-Being'. A philosophy for high-performance without burnout.",
                 longDesc: `
                     <p>A guide for the modern professional.</p>
                     <ul>
@@ -101,14 +102,14 @@ const data = {
             { 
                 title: "Mfumu Grooming", 
                 company: "Founder",
-                tags: ["[eCommerce]", "[Organic]", "[Product Design]"], 
-                desc: "Created and scaled a premium organic beard oil brand (Sweet Almond & Peppermint) to 5 retail outlets.",
+                tags: ["[eCommerce]", "[Organic Skin Care]", "[Product Design]"], 
+                desc: "Created and scaled a premium organic beard oil brand (Sweet Almond & Peppermint) to 3 retail outlets.",
                 longDesc: `
                     <p>Tangible product creation from zero to retail.</p>
                     <ul>
                         <li><strong>Formulation:</strong> Hand-crafted blend using Cold-Pressed Sweet Almond Oil and Organic Peppermint.</li>
-                        <li><strong>Growth:</strong> Achieved 40% MoM sales growth in Q1 via social commerce.</li>
-                        <li><strong>Retail:</strong> Negotiated shelf space in 5 independent beauty outlets in Lusaka.</li>
+                        <li><strong>Growth:</strong> Achieved 30% MoM sales growth in Q1 via social commerce.</li>
+                        <li><strong>Retail:</strong> Negotiated shelf space in 3 independent beauty outlets in Lusaka.</li>
                     </ul>
                 `
             },
