@@ -164,22 +164,68 @@ header {
     position: fixed;
     top: 40px;
     right: 5vw;
-    z-index: 100;
+    z-index: 3000; /* Enhanced z-index above all content */
     display: flex;
     gap: 30px;
     font-family: 'Syncopate', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.1em;
+    /* Enhanced backdrop for better visibility */
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.8s var(--transition-ease);
+}
+
+/* Creative mode nav styling */
+body.mode-creative .hud-switch {
+    background: rgba(39, 28, 25, 0.9); /* Organic Espresso background */
+}
+
+/* Hide nav when modal is open */
+body.no-scroll .hud-switch {
+    transform: translateY(-120px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .switch-btn {
     position: relative;
-    padding: 10px 10px;
-    color: #555;
+    padding: 8px 12px;
+    color: #888;
     cursor: none;
     text-transform: uppercase;
-    transition: color 0.3s ease-out;
-    display: inline-block;
+    border-radius: 8px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Mobile scroll behavior */
+@media (max-width: 768px) {
+    .hud-switch {
+        top: 15px;
+        right: 15px;
+        padding: 10px 15px;
+        gap: 12px;
+        font-size: 0.65rem;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+    }
+    
+    .hud-switch.hide-on-scroll {
+        transform: translateY(-100px);
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    /* Ensure nav is properly hidden on mobile when modal is open */
+    body.no-scroll .hud-switch {
+        transform: translateY(-120px) !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
 }
 
 .switch-btn::before {
@@ -189,6 +235,8 @@ header {
     left: 10px;
     width: 0%;
     height: 1px;
+    transition: color 0.3s ease-out;
+    display: inline-block;
     background: var(--accent);
     transition: width 0.3s ease, background 0.8s var(--transition-ease);
 }
@@ -274,6 +322,21 @@ header {
     color: #ccc;
 }
 
+/* Optional line clamping for variable text lengths */
+.card-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3; /* Standard property for compatibility */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 600px;
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: #ccc;
+}
+
 /* --- MODAL (SLIDE-OUT) --- */
 .modal-backdrop {
     position: fixed;
@@ -282,8 +345,8 @@ header {
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 1999;
     opacity: 0;
     pointer-events: none;
@@ -317,13 +380,24 @@ header {
 }
 
 .close-btn {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    font-size: 2rem;
-    color: var(--text);
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 50%;
     cursor: none;
-    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    z-index: 2001;
+    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
 }
 
 .close-btn:hover { color: var(--accent); }
@@ -369,11 +443,34 @@ header {
 .modal-body ul {
     padding-left: 20px;
     margin-top: 20px;
+    list-style: none;
 }
 
 .modal-body li {
     margin-bottom: 12px;
-    list-style-type: square;
+    position: relative;
+    padding-left: 20px;
+}
+
+.modal-body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent);
+    transform: translateY(-50%);
+}
+
+/* Technical mode: square bullets */
+body:not(.mode-creative) .modal-body li::before {
+    border-radius: 0;
+}
+
+/* Creative mode: circle bullets */
+body.mode-creative .modal-body li::before {
+    border-radius: 50%;
 }
 
 .modal-body strong {
@@ -432,9 +529,21 @@ h2.big-link:hover {
     
     .hud-switch {
         top: 20px;
-        right: 5vw;
+        right: 20px;
         gap: 15px;
+        padding: 12px 16px;
+        font-size: 0.65rem;
     }
+    
+    .close-btn {
+        top: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+    }
+    
+    /* Remove mobile specific styling that was overridden */
     
     .project-modal {
         padding: 60px 20px;

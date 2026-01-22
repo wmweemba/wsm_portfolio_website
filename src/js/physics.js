@@ -110,3 +110,14 @@ function animateBg() {
 window.addEventListener('resize', resize);
 resize(); // Initial call
 animateBg();
+
+// Minimal physics hook - works with existing CSS system
+window.updatePhysicsEngine = function(mode) {
+    const root = document.documentElement;
+    
+    if (mode === 'technical') {
+        root.style.setProperty('--particle-color', '0, 240, 255');
+    } else if (mode === 'creative') {
+        root.style.setProperty('--particle-color', '245, 158, 11');
+    }
+};

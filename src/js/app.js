@@ -8,7 +8,7 @@ let currentMode = 'technical'; // Track mode for modal logic
 // --- DATA & CONTENT LOGIC ---
 const data = {
     technical: {
-        about: "Results-driven ICT professional with 12+ years experience in managing banking infrastructure, enforcing industry compliance, and leading digital transformation.",
+        about: "Results-driven ICT professional with 12+ years experience in managing banking infrastructure, enforcing ITIL ITSM standards, and leading digital transformation.",
         scroller: `
             <p>Head of ICT</p>
             <p>Network Architecture</p>
@@ -268,7 +268,7 @@ function renderContent(mode) {
         }, 300);
     }
     
-    // 4. Hook for Physics Engine
+    // Hook for Physics Engine
     if (window.updatePhysicsEngine) {
         window.updatePhysicsEngine(mode);
     }
@@ -350,6 +350,75 @@ window.copyEmail = function(e) {
     document.body.removeChild(textArea);
 }
 
+// --- MOBILE SCROLL NAVIGATION ---
+function initMobileScrollNav() {
+    const nav = document.querySelector('.hud-switch');
+    if (!nav) return;
+    
+    let lastScrollY = window.scrollY;
+    let scrollTimeout;
+    let isScrolling = false;
+    
+    function checkMobile() {
+        return window.innerWidth <= 768;
+    }
+    
+    function handleScroll() {
+        if (!checkMobile()) return; // Only for mobile
+        
+        const currentScrollY = window.scrollY;
+        
+        // Clear existing timeout
+        clearTimeout(scrollTimeout);
+        
+        // Don't hide nav if modal is open
+        if (document.body.classList.contains('no-scroll')) return;
+        
+        // Hide/show based on scroll direction
+        if (currentScrollY > lastScrollY && currentScrollY > 50) {
+            // Scrolling down - hide nav
+            nav.classList.add('hide-on-scroll');
+            isScrolling = true;
+        } else if (currentScrollY < lastScrollY || currentScrollY <= 50) {
+            // Scrolling up or near top - show nav
+            nav.classList.remove('hide-on-scroll');
+            isScrolling = false;
+        }
+        
+        lastScrollY = currentScrollY;
+        
+        // Show nav after scroll stops
+        scrollTimeout = setTimeout(() => {
+            if (isScrolling && checkMobile()) {
+                nav.classList.remove('hide-on-scroll');
+                isScrolling = false;
+            }
+        }, 1500);
+    }
+    
+    // Throttled scroll listener
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (!checkMobile()) {
+            nav.classList.remove('hide-on-scroll');
+            isScrolling = false;
+        }
+    });
+    
+    console.log('📱 Mobile scroll navigation initialized');
+}
+
 // --- INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 The Kinetic Architect - DOM Content Loaded');
@@ -381,9 +450,11 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🎯 Initializing cursor and magnetic buttons...');
     initCustomCursor();
     initMagneticButtons();
+    initMobileScrollNav();
     
     // Init default content
     console.log('🎨 Rendering initial technical content...');
+    renderContent('technical');
     renderContent('technical');
     
     // Toggle Listeners
