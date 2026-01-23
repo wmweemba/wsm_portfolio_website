@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Enhanced Physics Engine**: Dual-persona physics behavior with velocity control and connection distance variations
+- **Velocity Control**: Technical mode (1.5x fast/data stream), Creative mode (0.6x slow/floating) with instant transitions
+- **Connection Distance**: Technical mode (100px tight), Creative mode (120px loose/organic) for distinct visual personalities
 - **Modular Architecture**: Successfully refactored monolith.md into clean, modular file structure
 - **index.html**: Clean HTML structure with proper external CSS and JS links
 - **src/css/style.css**: Complete stylesheet extracted from monolith with all typography, layout, and responsive styles
@@ -32,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Navigation**: Enhanced navigation with additional About button for user engagement
 - **Modal System**: Complete modal UX overhaul with glassmorphism effects, proper z-index hierarchy, and mobile optimization
 - **Theme System**: Enhanced dual-persona theming with particle system integration and navigation styling
+- **CSS Polish**: Added tech tag margin-bottom spacing (0.5rem) for clean mobile wrapping
 
 ### Fixed
 - **Variable Name Conflict**: Resolved critical JavaScript error where both physics.js and app.js declared global `mouseX` variables causing "Identifier already declared" syntax error

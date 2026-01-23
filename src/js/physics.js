@@ -6,6 +6,8 @@ let particles = [];
 let particleCount = 80;
 let mobileSlowdown = 1;
 let mouseX = 0, mouseY = 0;
+let velocityFactor = 1; // Dynamic velocity multiplier
+let connectionDistance = 100; // Dynamic connection distance
 
 // Track mouse position for particle interaction
 document.addEventListener('mousemove', (e) => {
@@ -33,16 +35,16 @@ class Particle {
     constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.5 * mobileSlowdown;
-        this.vy = (Math.random() - 0.5) * 0.5 * mobileSlowdown;
+        this.vx = (Math.random() - 0.5) * 0.5 * mobileSlowdown * velocityFactor;
+        this.vy = (Math.random() - 0.5) * 0.5 * mobileSlowdown * velocityFactor;
         // Boosted Size and Alpha for visibility
         this.size = Math.random() * 3; 
         this.alpha = Math.random() * 0.8 + 0.2; // Min 20% opacity
     }
 
     update() {
-        this.x += this.vx;
-        this.y += this.vy;
+        this.x += this.vx * velocityFactor;
+        this.y += this.vy * velocityFactor;
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
 
@@ -92,7 +94,7 @@ function animateBg() {
             const dx = particles[i].x - particles[j].x;
             const dy = particles[i].y - particles[j].y;
             const dist = Math.sqrt(dx*dx + dy*dy);
-            if(dist < 100) {
+            if(dist < connectionDistance) {
                 // Dynamic connection line color
                 ctx.strokeStyle = `rgba(${particleRgb}, ${0.15 - dist/1000})`;
                 ctx.lineWidth = 0.5;
@@ -111,13 +113,30 @@ window.addEventListener('resize', resize);
 resize(); // Initial call
 animateBg();
 
-// Minimal physics hook - works with existing CSS system
+// Enhanced physics hook - controls velocity and connections
 window.updatePhysicsEngine = function(mode) {
     const root = document.documentElement;
     
     if (mode === 'technical') {
         root.style.setProperty('--particle-color', '0, 240, 255');
+        velocityFactor = 1.5; // Fast/Data Stream effect
+        connectionDistance = 100; // Tight connections
+        
+        // Apply velocity changes to existing particles immediately
+        particles.forEach(particle => {
+            particle.vx = particle.vx * (velocityFactor / (velocityFactor === 1.5 ? 1 : 0.6));
+            particle.vy = particle.vy * (velocityFactor / (velocityFactor === 1.5 ? 1 : 0.6));
+        });
+        
     } else if (mode === 'creative') {
         root.style.setProperty('--particle-color', '245, 158, 11');
+        velocityFactor = 0.6; // Slow/Floating effect
+        connectionDistance = 120; // Loose, organic web
+        
+        // Apply velocity changes to existing particles immediately
+        particles.forEach(particle => {
+            particle.vx = particle.vx * (velocityFactor / (velocityFactor === 0.6 ? 1 : 1.5));
+            particle.vy = particle.vy * (velocityFactor / (velocityFactor === 0.6 ? 1 : 1.5));
+        });
     }
 };

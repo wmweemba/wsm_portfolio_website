@@ -3,10 +3,10 @@
 ## Project Overview
 **"The Kinetic Architect"** is a high-performance dual-persona portfolio showcasing both technical infrastructure expertise and creative entrepreneurship. Built with vanilla JavaScript to demonstrate raw engineering capability.
 
-## Essential Reference Files
+## Essential Reference Files - ALWAYS READ FIRST
+- **`changelog.md`**: **CRITICAL** - Current project state and recent changes. Check this FIRST for real-time context before making any modifications or recommendations
 - **`WSM_Portfolio_PRD.md`**: Complete product requirements and technical constraints
 - **`monolith.md`**: Original Gemini Canvas prototype - reference for design intent and complete working code
-- **`changelog.md`**: Project evolution tracking - ALWAYS update when making changes
 
 ## Architecture & Key Components
 
@@ -56,6 +56,13 @@ window.closeProject = function() { ... }        // Modal close
 ```
 
 ## Development Workflow
+
+### MANDATORY: Check Current State First
+1. **Always read `changelog.md`** before starting any task to understand:
+   - Recent changes and current project status
+   - Known issues and fixes already implemented
+   - Features added or removed since last interaction
+   - Current development focus and priorities
 
 ### Local Development
 ```bash

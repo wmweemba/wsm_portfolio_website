@@ -309,6 +309,7 @@ body.no-scroll .hud-switch {
     padding: 4px 12px; 
     border-radius: 4px; 
     background: rgba(255,255,255,0.02);
+    margin-bottom: 0.5rem; /* Improved mobile wrapping */
     transition: border-color 0.3s;
 }
 
