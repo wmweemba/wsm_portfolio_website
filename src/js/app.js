@@ -1,6 +1,14 @@
 // --- DOM ELEMENT CACHING ---
-let scrollerContent, workContainer, modal, backdrop, mTitle, mTags, mBody;
+let scrollerContent, workContainer, modal, backdrop, mTitle, mTags, mBody, mImage;
 let btnTech, btnCreative;
+
+// --- GLOBAL SOCIAL LINKS ---
+const globalSocials = [
+    { label: 'LinkedIn', url: 'https://linkedin.com/in/williamweemba' },
+    { label: 'X (Twitter)', url: 'https://twitter.com/wmweemba' },
+    { label: 'Facebook', url: 'https://facebook.com/william.mweemba' },
+    { label: 'Instagram', url: 'https://instagram.com/wmweemba' }
+];
 
 // --- GLOBAL STATE ---
 let currentMode = 'technical'; // Track mode for modal logic
@@ -9,6 +17,7 @@ let currentMode = 'technical'; // Track mode for modal logic
 const data = {
     technical: {
         about: "Results-driven ICT professional with 12+ years experience in managing banking infrastructure, enforcing ITIL ITSM standards, and leading digital transformation.",
+        image: "./src/images/william-tech.jpeg",
         scroller: `
             <p>Head of ICT</p>
             <p>Network Architecture</p>
@@ -51,6 +60,7 @@ const data = {
                 company: "MERN Stack Certified",
                 tags: ["[React]", "[Node.js]", "[Python]", "[API Development]"], 
                 desc: "Bridging legacy systems with modern web architecture using MERN stack tools and frameworks.",
+                image: "./src/images/cert-mern.png",
                 longDesc: `
                     <p>Certified Full-Stack Developer (MERN).</p>
                     <ul>
@@ -72,11 +82,33 @@ const data = {
                         <li><strong>Integration:</strong> Deep knowledge of USSD gateways and Mobile Money API standards.</li>
                     </ul>
                 `
+            },
+            { 
+                title: "Nexus Consulting Services", 
+                company: "CEO & Founder",
+                tags: ["[ICT Consultancy]", "[Network Infrastructure]", "[Managed Services]"], 
+                desc: "Founded in 2017, providing high-quality digital solutions to SMEs and large organizations across Zambia.",
+                socials: [
+                    { label: 'Website', url: 'https://mynexusgroup.com/' },
+                    { label: 'LinkedIn', url: 'https://linkedin.com/company/nexus-consulting-services-zambia' },
+                    { label: 'Facebook', url: 'https://facebook.com/NexusGroupZambia' }
+                ],
+                longDesc: `
+                    <p>CEO and Founder of Nexus Consulting Services Limited - "Your missing link to achieve your goals."</p>
+                    <ul>
+                        <li><strong>Company Vision:</strong> Founded in 2017 to bridge the technology gap for Zambian businesses with expertise in telecommunications, networking, and collaboration solutions.</li>
+                        <li><strong>Service Portfolio:</strong> Call center implementation, ICT consultancy, network infrastructure, outsourced IT departments, and managed services.</li>
+                        <li><strong>Client Base:</strong> Serving major clients including Madison Insurance, Vision Fund Zambia, and Zambia National Building Society with enterprise-grade solutions.</li>
+                        <li><strong>Strategic Partnerships:</strong> Authorized partner with Sophos, 3CX, Bitrix24, Juniper Networks, HP, and Lenovo for comprehensive technology solutions.</li>
+                        <li><strong>Mission:</strong> Delivering quality products and services at affordable costs while maintaining the highest levels of customer satisfaction.</li>
+                    </ul>
+                `
             }
         ]
     },
     creative: {
         about: "A creative entrepreneur bridging the gap between rigid technology and organic storytelling. Believer in sustainable hustle.",
+        image: "./src/images/william-creative.jpeg",
         scroller: `
             <p>The Mindful Hustler</p>
             <p>Organic Skin Care</p>
@@ -90,6 +122,11 @@ const data = {
                 company: "Author & Philosophy",
                 tags: ["[Book]", "[Energy Management]", "[Flow State]"], 
                 desc: "Author of 'The Mindful Hustler - Balancing Ambition and Well-Being'. A philosophy for high-performance without burnout.",
+                image: "./src/images/hustler-book.jpeg",
+                socials: [
+                    { label: 'Amazon', url: 'https://amazon.com/mindful-hustler' },
+                    { label: 'Goodreads', url: 'https://goodreads.com/book/mindful-hustler' }
+                ],
                 longDesc: `
                     <p>A guide for the modern professional.</p>
                     <ul>
@@ -104,6 +141,11 @@ const data = {
                 company: "Founder",
                 tags: ["[eCommerce]", "[Organic Skin Care]", "[Product Design]"], 
                 desc: "Created and scaled a premium organic beard oil brand (Sweet Almond & Peppermint) to 3 retail outlets.",
+                image: "./src/images/mfumu-product.jpeg",
+                socials: [
+                    { label: 'Instagram', url: 'https://instagram.com/mfumugrooming' },
+                    { label: 'Facebook', url: 'https://facebook.com/mfumugrooming' }
+                ],
                 longDesc: `
                     <p>Tangible product creation from zero to retail.</p>
                     <ul>
@@ -285,6 +327,47 @@ window.openProject = function(index) {
     mTags.innerHTML = item.tags.map(t => `<span>${t}</span>`).join('');
     mBody.innerHTML = item.longDesc || item.desc; // Fallback if no longDesc
     
+    // Add social links if available
+    if (item.socials && item.socials.length > 0) {
+        const socialLinksHtml = `
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--grid);">
+                <h4 style="color: var(--accent); font-family: 'Syncopate', sans-serif; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase;">Connect</h4>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    ${item.socials.map(social => `
+                        <a href="${social.url}" target="_blank" style="
+                            color: var(--text);
+                            text-decoration: none;
+                            padding: 8px 16px;
+                            border: 1px solid rgba(255,255,255,0.2);
+                            border-radius: 20px;
+                            font-size: 0.85rem;
+                            transition: border-color 0.3s, color 0.3s;
+                            display: inline-block;
+                        " onmouseover="this.style.borderColor='var(--accent)'; this.style.color='var(--accent)'" 
+                           onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='var(--text)'">
+                            ${social.label}
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+        mBody.innerHTML += socialLinksHtml;
+    }
+    
+    // Handle Image with specific styling for different projects
+    if (item.image && mImage) {
+        let imageStyle = 'width: 100%; height: 100%; object-fit: cover; border-radius: 8px;';
+        
+        // Special handling for specific projects
+        if (item.title === 'Mfumu Grooming') {
+            imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 8px;';
+        }
+        
+        mImage.innerHTML = `<img src="${item.image}" alt="${item.title}" style="${imageStyle}">`;
+    } else if (mImage) {
+        mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
+    }
+    
     // Show
     modal.classList.add('active');
     backdrop.classList.add('active');
@@ -298,12 +381,46 @@ window.closeProject = function() {
 }
 
 window.openAboutModal = function() {
-    const aboutContent = data[currentMode].about;
+    const aboutData = data[currentMode];
+    const aboutContent = aboutData.about;
     
     // Populate Modal with About Content
     mTitle.innerText = currentMode === 'technical' ? 'Technical Background' : 'Creative Philosophy';
     mTags.innerHTML = currentMode === 'technical' ? '<span>[Professional]</span>' : '<span>[Creative]</span>';
     mBody.innerHTML = `<p>${aboutContent}</p>`;
+    
+    // Add global social links for About modal
+    const socialLinksHtml = `
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--grid);">
+            <h4 style="color: var(--accent); font-family: 'Syncopate', sans-serif; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase;">Follow Me</h4>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                ${globalSocials.map(social => `
+                    <a href="${social.url}" target="_blank" style="
+                        color: var(--text);
+                        text-decoration: none;
+                        padding: 8px 16px;
+                        border: 1px solid rgba(255,255,255,0.2);
+                        border-radius: 20px;
+                        font-size: 0.85rem;
+                        transition: border-color 0.3s, color 0.3s;
+                        display: inline-block;
+                    " onmouseover="this.style.borderColor='var(--accent)'; this.style.color='var(--accent)'" 
+                       onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='var(--text)'">
+                        ${social.label}
+                    </a>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    mBody.innerHTML += socialLinksHtml;
+    
+    // Handle About Image with top positioning to show subject's head
+    if (aboutData.image && mImage) {
+        const imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 8px;';
+        mImage.innerHTML = `<img src="${aboutData.image}" alt="${currentMode} background" style="${imageStyle}">`;
+    } else if (mImage) {
+        mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
+    }
     
     // Show Modal
     modal.classList.add('active');
@@ -431,6 +548,7 @@ document.addEventListener('DOMContentLoaded', function() {
     mTitle = document.getElementById('m-title');
     mTags = document.getElementById('m-tags');
     mBody = document.getElementById('m-body');
+    mImage = document.querySelector('.modal-image-placeholder');
     btnTech = document.getElementById('btn-tech');
     btnCreative = document.getElementById('btn-creative');
     
@@ -441,7 +559,7 @@ document.addEventListener('DOMContentLoaded', function() {
         backdrop: !!backdrop,
         mTitle: !!mTitle,
         mTags: !!mTags,
-        mBody: !!mBody,
+        mImage: !!mImage,
         btnTech: !!btnTech,
         btnCreative: !!btnCreative
     });

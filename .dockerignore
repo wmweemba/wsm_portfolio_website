@@ -1,0 +1,64 @@
+# The Kinetic Architect - Docker Ignore File
+
+# Development dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Git repository
+.git/
+.gitignore
+
+# Documentation files
+README.md
+changelog.md
+WSM_Portfolio_PRD.md
+monolith.md
+project_context.txt
+.github/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Build directories (if any)
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs/
+*.log
+
+# Development server files
+package.json
+package-lock.json
+
+# Docker files (don't copy into container)
+Dockerfile
+.dockerignore
