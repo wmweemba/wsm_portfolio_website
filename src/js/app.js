@@ -4,10 +4,10 @@ let btnTech, btnCreative;
 
 // --- GLOBAL SOCIAL LINKS ---
 const globalSocials = [
-    { label: 'LinkedIn', url: 'https://linkedin.com/in/williamweemba' },
-    { label: 'X (Twitter)', url: 'https://twitter.com/wmweemba' },
-    { label: 'Facebook', url: 'https://facebook.com/william.mweemba' },
-    { label: 'Instagram', url: 'https://instagram.com/wmweemba' }
+    { label: 'LinkedIn', url: 'https://www.linkedin.com/in/william-s-mweemba/' },
+    { label: 'X (Twitter)', url: 'https://x.com/jrwill_m' },
+    { label: 'Facebook', url: 'https://www.facebook.com/william.mweemba' },
+    { label: 'Instagram', url: 'https://www.instagram.com/wzmii/' }
 ];
 
 // --- GLOBAL STATE ---
@@ -31,6 +31,7 @@ const data = {
                 company: "Financial Institution",
                 tags: ["[Banking Systems]", "[ITIL ITSM]", "[High Availability]"], 
                 desc: "Leading enterprise digital transformation, Core Banking Migrations, and Disaster Recovery protocols.",
+                image: "./src/images/core-banking.jpeg",
                 longDesc: `
                     <p>Strategic leadership over banking infrastructure and policy.</p>
                     <ul>
@@ -46,6 +47,7 @@ const data = {
                 company: "Africonnect",
                 tags: ["[ISP Infrastructure]", "[Cisco/Huawei]", "[Routing]"], 
                 desc: "Served on team that managed Tier-1 ISP infrastructure, ensuring 99% uptime for critical enterprise clients.",
+                image: "./src/images/network-operations.jpeg",
                 longDesc: `
                     <p>Ensuring stability for a Tier-1 ISP network.</p>
                     <ul>
@@ -75,6 +77,7 @@ const data = {
                 company: "CDFP Certified",
                 tags: ["[Fintech]", "[Mobile Money]", "[Payment Gateways]"], 
                 desc: "Certified Digital Finance Practitioner specializing in mobile money ecosystems and DFS policy.",
+                image: "./src/images/digital-finance.jpeg",
                 longDesc: `
                     <p>Expertise in the intersection of technology and financial inclusion.</p>
                     <ul>
@@ -88,10 +91,11 @@ const data = {
                 company: "CEO & Founder",
                 tags: ["[ICT Consultancy]", "[Network Infrastructure]", "[Managed Services]"], 
                 desc: "Founded in 2017, providing high-quality digital solutions to SMEs and large organizations across Zambia.",
+                image: "./src/images/nexus-tech.jpeg",
                 socials: [
                     { label: 'Website', url: 'https://mynexusgroup.com/' },
-                    { label: 'LinkedIn', url: 'https://linkedin.com/company/nexus-consulting-services-zambia' },
-                    { label: 'Facebook', url: 'https://facebook.com/NexusGroupZambia' }
+                    { label: 'LinkedIn', url: 'https://www.linkedin.com/company/nexus-consulting-zambia/' },
+                    { label: 'Facebook', url: 'https://www.facebook.com/NexusGroupZambia/' }
                 ],
                 longDesc: `
                     <p>CEO and Founder of Nexus Consulting Services Limited - "Your missing link to achieve your goals."</p>
@@ -124,8 +128,8 @@ const data = {
                 desc: "Author of 'The Mindful Hustler - Balancing Ambition and Well-Being'. A philosophy for high-performance without burnout.",
                 image: "./src/images/hustler-book.jpeg",
                 socials: [
-                    { label: 'Amazon', url: 'https://amazon.com/mindful-hustler' },
-                    { label: 'Goodreads', url: 'https://goodreads.com/book/mindful-hustler' }
+                    { label: 'Gumroad Store', url: 'https://wmweemble.gumroad.com/l/themindfulhustler' },
+                    { label: 'Facebook', url: 'https://www.facebook.com/kineticmotivation/' }
                 ],
                 longDesc: `
                     <p>A guide for the modern professional.</p>
@@ -143,8 +147,8 @@ const data = {
                 desc: "Created and scaled a premium organic beard oil brand (Sweet Almond & Peppermint) to 3 retail outlets.",
                 image: "./src/images/mfumu-product.jpeg",
                 socials: [
-                    { label: 'Instagram', url: 'https://instagram.com/mfumugrooming' },
-                    { label: 'Facebook', url: 'https://facebook.com/mfumugrooming' }
+                    { label: 'Instagram', url: 'https://www.instagram.com/mfumugrooming/' },
+                    { label: 'Facebook', url: 'https://www.facebook.com/mfumugrooming/' }
                 ],
                 longDesc: `
                     <p>Tangible product creation from zero to retail.</p>
@@ -160,6 +164,7 @@ const data = {
                 company: "Google Certified",
                 tags: ["[Google Ads]", "[SEO]", "[Video Marketing]"], 
                 desc: "Data-driven growth strategies. Certified in Google Display & Video Ads to maximize ROAS.",
+                image: "./src/images/google-ads.jpeg",
                 longDesc: `
                     <p>Helping SMEs dominate local search.</p>
                     <ul>
@@ -174,6 +179,7 @@ const data = {
                 company: "Content Platform",
                 tags: ["[Creator Economy]", "[Storytelling]"], 
                 desc: "A platform sharing the 'Swiss Army Knife' philosophy of skill diversification.",
+                image: "./src/images/billu-publishing.jpeg",
                 longDesc: `
                     <p>Advocating for the polymath professional.</p>
                     <ul>

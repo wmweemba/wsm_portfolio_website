@@ -13,6 +13,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Enhanced Image Classes**: modal-hero-image and project-hero-image for consistent styling
 - **Project Social Classes**: btn-social-project class for themed button styling
 - **Image Display System**: Complete modal image functionality for portfolio projects and persona photos
+- **Complete Project Image Coverage**: Added hero images to all remaining portfolio projects
+  - Head of ICT: core-banking.jpeg (enterprise digital transformation theme)
+  - Network Operations: network-operations.jpeg (infrastructure management)
+  - Digital Finance: digital-finance.jpeg (DFS practitioner specialization)
+  - Digital Strategy: google-ads.jpeg (Google Ads certification focus)
+  - Nexus Consulting: nexus-tech.jpeg (company branding)
+  - Billu Publishing: billu-publishing.jpeg (platform identity)
+
+### Changed
+- **Social Links Update**: Updated all social media links with actual user profiles
+  - Global footer: LinkedIn, X (Twitter), Facebook, Instagram with real URLs
+  - Project-specific: Nexus Consulting LinkedIn/Facebook, Mfumu Grooming Instagram/Facebook
+  - Replaced Goodreads with Gumroad store link for "The Mindful Hustler" ebook purchases
+  - Added Kinetic Motivation Facebook page link
+- **Image Styling Optimization**: Removed fixed height and object-fit constraints from hero images
+  - Allows natural aspect ratios for improved william-tech.jpeg and william-creative.jpeg display
+  - Maintains responsive width and subtle border-radius styling
 - **Social Media Integration**: Dynamic social links for projects and global personal social media profiles
 - **Nexus Consulting Services**: Added company project to technical section with comprehensive business details
 - **Enhanced Physics Engine**: Dual-persona physics behavior with velocity control and connection distance variations
