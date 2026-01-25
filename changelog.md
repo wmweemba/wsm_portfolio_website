@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Semantic Class Structure**: Added proper CSS classes for modal images and social elements
+- **Global Social Footer**: Fixed HUD-style footer with bracket notation ([LINKEDIN], [FACEBOOK], etc.)
+- **Enhanced Image Classes**: modal-hero-image and project-hero-image for consistent styling
+- **Project Social Classes**: btn-social-project class for themed button styling
 - **Image Display System**: Complete modal image functionality for portfolio projects and persona photos
 - **Social Media Integration**: Dynamic social links for projects and global personal social media profiles
 - **Nexus Consulting Services**: Added company project to technical section with comprehensive business details
@@ -42,6 +46,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Theme System**: Enhanced dual-persona theming with particle system integration and navigation styling
 - **CSS Polish**: Added tech tag margin-bottom spacing (0.5rem) for clean mobile wrapping
 - **Image Positioning**: Optimized object-fit and object-position for better subject framing in portraits and product photos
+- **Modal Image Styling**: Added 250px height constraint and 4px border radius for consistent presentation
+- **Social Button Styling**: Outlined button design with hover effects and theme-aware accent colors
 
 ### Fixed
 - **Variable Name Conflict**: Resolved critical JavaScript error where both physics.js and app.js declared global `mouseX` variables causing "Identifier already declared" syntax error

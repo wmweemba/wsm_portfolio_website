@@ -334,7 +334,7 @@ window.openProject = function(index) {
                 <h4 style="color: var(--accent); font-family: 'Syncopate', sans-serif; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase;">Connect</h4>
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     ${item.socials.map(social => `
-                        <a href="${social.url}" target="_blank" style="
+                        <a href="${social.url}" target="_blank" class="btn-social-project" style="
                             color: var(--text);
                             text-decoration: none;
                             padding: 8px 16px;
@@ -363,7 +363,7 @@ window.openProject = function(index) {
             imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 8px;';
         }
         
-        mImage.innerHTML = `<img src="${item.image}" alt="${item.title}" style="${imageStyle}">`;
+        mImage.innerHTML = `<img src="${item.image}" alt="${item.title}" class="project-hero-image" style="${imageStyle}">`;
     } else if (mImage) {
         mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
     }
@@ -417,7 +417,7 @@ window.openAboutModal = function() {
     // Handle About Image with top positioning to show subject's head
     if (aboutData.image && mImage) {
         const imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 8px;';
-        mImage.innerHTML = `<img src="${aboutData.image}" alt="${currentMode} background" style="${imageStyle}">`;
+        mImage.innerHTML = `<img src="${aboutData.image}" alt="${currentMode} background" class="modal-hero-image" style="${imageStyle}">`;
     } else if (mImage) {
         mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
     }
@@ -465,6 +465,37 @@ window.copyEmail = function(e) {
     }
 
     document.body.removeChild(textArea);
+}
+
+// --- GLOBAL SOCIALS FOOTER ---
+function renderGlobalSocials() {
+    const globalCommsHtml = `
+        <div id="global-comms" style="
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2500;
+            display: flex;
+            gap: 15px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        ">
+            ${globalSocials.map(social => `
+                <a href="${social.url}" target="_blank" style="
+                    color: var(--accent);
+                    text-decoration: none;
+                    transition: color 0.3s ease;
+                " onmouseover="this.style.color='var(--text)'" 
+                   onmouseout="this.style.color='var(--accent)'">
+                    [${social.label.toUpperCase()}]
+                </a>
+            `).join('')}
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', globalCommsHtml);
 }
 
 // --- MOBILE SCROLL NAVIGATION ---
@@ -569,6 +600,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCustomCursor();
     initMagneticButtons();
     initMobileScrollNav();
+    renderGlobalSocials();
     
     // Init default content
     console.log('🎨 Rendering initial technical content...');
