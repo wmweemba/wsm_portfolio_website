@@ -205,6 +205,24 @@ body.no-scroll .hud-switch {
 
 /* Mobile scroll behavior */
 @media (max-width: 768px) {
+    /* Performance optimizations for mobile */
+    #bg-canvas {
+        opacity: 0.4; /* Reduced opacity for mobile performance */
+    }
+    
+    /* Reduce animation complexity on mobile */
+    * {
+        animation-duration: 0.5s !important;
+        transition-duration: 0.3s !important;
+    }
+    
+    /* Optimize text rendering on mobile */
+    body {
+        text-rendering: optimizeSpeed;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
     .hud-switch {
         top: 15px;
         right: 15px;

@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Critical Mobile Performance Issues**: Comprehensive fix for mobile lag, content disappearance, and unresponsive functions
+  - **Physics Engine Optimization**: Reduced mobile particle count from 30 to 20, added frame skipping, and automatic performance degradation
+  - **Memory Leak Prevention**: Added animation frame cleanup, modal content clearing, and page visibility API integration
+  - **Mobile-Specific Throttling**: Added 1-second cooldown for theme switching on mobile devices
+  - **CSS Performance**: Reduced canvas opacity, shortened animation durations, and optimized text rendering for mobile
+  - **Automatic Recovery**: Physics engine restarts after modal close and theme changes to prevent accumulation issues
+  - **Background Optimization**: Physics pauses when page is hidden and cleans up on page unload
 - **Mobile Social Links Layout**: Fixed horizontal overflow issue with global social footer on mobile devices
   - Added responsive CSS for #global-comms to stack vertically on mobile (max-width: 768px)
   - Implemented shortened social media labels for mobile: LI, X, FB, IG instead of full bracket notation

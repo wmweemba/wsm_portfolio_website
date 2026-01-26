@@ -384,6 +384,20 @@ window.closeProject = function() {
     modal.classList.remove('active');
     backdrop.classList.remove('active');
     document.body.classList.remove('no-scroll');
+    
+    // Mobile performance optimization - cleanup modal content after closing
+    if (window.innerWidth <= 768) {
+        setTimeout(() => {
+            if (!modal.classList.contains('active')) {
+                mBody.innerHTML = '';
+                mImage.innerHTML = '';
+                // Restart physics engine to clear any accumulated issues
+                if (window.restartPhysics) {
+                    window.restartPhysics();
+                }
+            }
+        }, 500);
+    }
 }
 
 window.openAboutModal = function() {

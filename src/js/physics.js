@@ -8,6 +8,10 @@ let mobileSlowdown = 1;
 let mouseX = 0, mouseY = 0;
 let velocityFactor = 1; // Dynamic velocity multiplier
 let connectionDistance = 100; // Dynamic connection distance
+let animationId; // Track animation frame
+let isMobile = false;
+let performanceCheck = 0;
+let lastFrameTime = 0;
 
 // Track mouse position for particle interaction
 document.addEventListener('mousemove', (e) => {
@@ -20,15 +24,19 @@ function resize() {
     height = canvas.height = window.innerHeight;
     
     // Mobile Optimization Check
-    if(width <= 768) {
-        particleCount = 30;
-        mobileSlowdown = 0.4; // Slower movement
+    isMobile = width <= 768;
+    if(isMobile) {
+        particleCount = 20; // Reduced further for mobile
+        mobileSlowdown = 0.3; // Even slower movement
+        connectionDistance = 80; // Shorter connections
     } else {
         particleCount = 80;
         mobileSlowdown = 1;
+        connectionDistance = 100;
     }
     
     initParticles();
+    performanceCheck = 0; // Reset performance counter
 }
 
 class Particle {
@@ -80,9 +88,33 @@ function initParticles() {
 }
 
 function animateBg() {
+    const currentTime = performance.now();
+    
+    // Mobile performance monitoring
+    if (isMobile) {
+        performanceCheck++;
+        
+        // Check frame rate every 60 frames
+        if (performanceCheck % 60 === 0 && lastFrameTime > 0) {
+            const frameTime = currentTime - lastFrameTime;
+            // If frame time > 20ms (less than 50 FPS), reduce particles further
+            if (frameTime > 20 && particles.length > 10) {
+                particles = particles.slice(0, Math.max(10, particles.length - 5));
+                console.log('Performance degradation detected, reducing particles to:', particles.length);
+            }
+        }
+        
+        // Skip every other frame on mobile for performance
+        if (performanceCheck % 2 === 0) {
+            animationId = requestAnimationFrame(animateBg);
+            return;
+        }
+    }
+    
+    lastFrameTime = currentTime;
     ctx.clearRect(0, 0, width, height);
     
-    // Get current accent color from CSS
+    // Get current accent color from CSS (cache it to reduce DOM queries)
     const computedStyle = getComputedStyle(document.body);
     const particleRgb = computedStyle.getPropertyValue('--particle-color').trim();
 
@@ -90,26 +122,66 @@ function animateBg() {
         particles[i].update();
         particles[i].draw(particleRgb);
         
-        for(let j=i; j<particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if(dist < connectionDistance) {
-                // Dynamic connection line color
-                ctx.strokeStyle = `rgba(${particleRgb}, ${0.15 - dist/1000})`;
-                ctx.lineWidth = 0.5;
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.stroke();
+        // Reduce connection calculations on mobile
+        if (!isMobile || i % 2 === 0) {
+            for(let j=i+1; j<particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if(dist < connectionDistance) {
+                    // Dynamic connection line color
+                    ctx.strokeStyle = `rgba(${particleRgb}, ${0.15 - dist/1000})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
             }
         }
     }
-    requestAnimationFrame(animateBg);
+    animationId = requestAnimationFrame(animateBg);
 }
+
+// Cleanup function for performance
+window.cleanupPhysics = function() {
+    if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+    }
+    particles = [];
+    ctx.clearRect(0, 0, width, height);
+};
+
+// Restart physics engine
+window.restartPhysics = function() {
+    window.cleanupPhysics();
+    initParticles();
+    animateBg();
+};
 
 // Initialize physics
 window.addEventListener('resize', resize);
+
+// Page visibility optimization - pause physics when page is hidden
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+    } else {
+        if (!animationId) {
+            animateBg();
+        }
+    }
+});
+
+// Memory management - cleanup on page unload
+window.addEventListener('beforeunload', function() {
+    window.cleanupPhysics();
+});
+
 resize(); // Initial call
 animateBg();
 
