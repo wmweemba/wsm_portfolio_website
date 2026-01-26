@@ -1,0 +1,18 @@
+# Coolify deployment configuration
+# This ensures proper deployment settings for webhook integration
+
+# Build settings
+build_command=npm run build
+static_assets=true
+
+# Health check settings
+health_check_path=/
+health_check_interval=30s
+
+# Environment settings
+port=80
+dockerfile=Dockerfile
+
+# Webhook settings
+auto_deploy=true
+branch=main

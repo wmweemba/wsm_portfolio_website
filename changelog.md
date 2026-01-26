@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Coolify Deployment Integration**: Enhanced webhook auto-deployment configuration
+  - Added `.coolify` configuration file with deployment settings (auto_deploy=true, branch=main)
+  - Created `health.html` endpoint for deployment health monitoring
+  - Added build script in package.json for deployment process
+  - Enhanced Dockerfile with health check integration and assets copying
+  - Improved deployment reliability for webhook-triggered updates
+
 ### Fixed
 - **Critical Mobile Performance Issues**: Comprehensive fix for mobile lag, content disappearance, and unresponsive functions
   - **Physics Engine Optimization**: Reduced mobile particle count from 30 to 20, added frame skipping, and automatic performance degradation
