@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Mobile Social Links Layout**: Fixed horizontal overflow issue with global social footer on mobile devices
+  - Added responsive CSS for #global-comms to stack vertically on mobile (max-width: 768px)
+  - Implemented shortened social media labels for mobile: LI, X, FB, IG instead of full bracket notation
+  - Improved mobile readability and eliminated text truncation in footer social links
+
 ### Added
 - **Semantic Class Structure**: Added proper CSS classes for modal images and social elements
 - **Global Social Footer**: Fixed HUD-style footer with bracket notation ([LINKEDIN], [FACEBOOK], etc.)

@@ -476,33 +476,42 @@ window.copyEmail = function(e) {
 
 // --- GLOBAL SOCIALS FOOTER ---
 function renderGlobalSocials() {
+    // Mobile-friendly label mapping
+    const getMobileLabel = (label) => {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) return label.toUpperCase();
+        
+        const mobileLabels = {
+            'LinkedIn': 'IN',
+            'X (Twitter)': 'X',
+            'Facebook': 'FB',
+            'Instagram': 'IG'
+        };
+        return mobileLabels[label] || label.substring(0, 2).toUpperCase();
+    };
+    
     const globalCommsHtml = `
-        <div id="global-comms" style="
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 2500;
-            display: flex;
-            gap: 15px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        ">
+        <div id="global-comms">
             ${globalSocials.map(social => `
-                <a href="${social.url}" target="_blank" style="
-                    color: var(--accent);
-                    text-decoration: none;
-                    transition: color 0.3s ease;
-                " onmouseover="this.style.color='var(--text)'" 
+                <a href="${social.url}" target="_blank" 
+                   onmouseover="this.style.color='var(--text)'" 
                    onmouseout="this.style.color='var(--accent)'">
-                    [${social.label.toUpperCase()}]
+                    [${getMobileLabel(social.label)}]
                 </a>
             `).join('')}
         </div>
     `;
     
     document.body.insertAdjacentHTML('beforeend', globalCommsHtml);
+    
+    // Update labels on window resize
+    window.addEventListener('resize', () => {
+        const globalComms = document.getElementById('global-comms');
+        if (globalComms) {
+            globalComms.remove();
+            renderGlobalSocials();
+        }
+    });
 }
 
 // --- MOBILE SCROLL NAVIGATION ---
