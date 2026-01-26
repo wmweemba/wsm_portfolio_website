@@ -369,7 +369,7 @@ window.openProject = function(index) {
             imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 8px;';
         }
         
-        mImage.innerHTML = `<img src="${item.image}" alt="${item.title}" class="project-hero-image" style="${imageStyle}">`;
+        mImage.innerHTML = `<img src="${item.image}" alt="${item.title} - William Mweemba Portfolio" class="project-hero-image" style="${imageStyle}">`;
     } else if (mImage) {
         mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
     }
@@ -423,7 +423,8 @@ window.openAboutModal = function() {
     // Handle About Image with top positioning to show subject's head
     if (aboutData.image && mImage) {
         const imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 8px;';
-        mImage.innerHTML = `<img src="${aboutData.image}" alt="${currentMode} background" class="modal-hero-image" style="${imageStyle}">`;
+        const modalTitle = currentMode === 'technical' ? 'Technical Background' : 'Creative Philosophy';
+        mImage.innerHTML = `<img src="${aboutData.image}" alt="${modalTitle} - William Mweemba" class="modal-hero-image" style="${imageStyle}">`;
     } else if (mImage) {
         mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
     }
