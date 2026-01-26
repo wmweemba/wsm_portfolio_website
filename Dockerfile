@@ -8,7 +8,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY index.html /usr/share/nginx/html/
 COPY health.html /usr/share/nginx/html/
 COPY src/ /usr/share/nginx/html/src/
-COPY assets/ /usr/share/nginx/html/assets/
 
 # Add health check for Coolify
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \

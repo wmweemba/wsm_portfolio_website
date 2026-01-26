@@ -90,6 +90,6 @@ npm start          # Alternative start command
 ## Deployment Context
 - **Target**: Dockerized Nginx on Hetzner VPS via Coolify
 - **Static Files**: No build process, direct file serving
-- **Assets**: `assets/` folder for images, docs, icons (future)
+- **Images**: All images stored in `src/images/` directory
 
 When modifying this codebase, maintain the performance-first vanilla approach and ensure mobile optimization remains intact.
