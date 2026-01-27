@@ -7,15 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- **Coolify Deployment Integration**: Enhanced webhook auto-deployment configuration
-  - Added `.coolify` configuration file with deployment settings (auto_deploy=true, branch=main)
-  - Created `health.html` endpoint for deployment health monitoring
-  - Added build script in package.json for deployment process
-  - Enhanced Dockerfile with health check integration and assets copying
-  - Improved deployment reliability for webhook-triggered updates
-
 ### Fixed
+- **MAJOR: Mobile Performance Solution**: Complete mobile physics removal with CSS static background
+  - **Desktop**: Full physics engine experience preserved (particles, mouse interaction, themes)
+  - **Mobile**: Zero-JS static background with animated gradients matching theme colors
+  - **Early Detection**: Mobile devices (≤768px) skip physics initialization entirely
+  - **Theme Support**: CSS background responds to technical/creative mode switching
+  - **Visual Appeal**: Maintains professional appearance with subtle gradient animations
+  - **Performance**: Eliminates all mobile lag, content disappearance, and rendering failures
 - **Critical Mobile Performance Issues**: Comprehensive fix for mobile lag, content disappearance, and unresponsive functions
   - **Physics Engine Optimization**: Reduced mobile particle count from 30 to 20, added frame skipping, and automatic performance degradation
   - **Memory Leak Prevention**: Added animation frame cleanup, modal content clearing, and page visibility API integration
@@ -29,6 +28,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Improved mobile readability and eliminated text truncation in footer social links
 
 ### Added
+- **Coolify Deployment Integration**: Enhanced webhook auto-deployment configuration
+  - Added `.coolify` configuration file with deployment settings (auto_deploy=true, branch=main)
+  - Created `health.html` endpoint for deployment health monitoring
+  - Added build script in package.json for deployment process
+  - Enhanced Dockerfile with health check integration and proper asset copying
+  - Improved deployment reliability for webhook-triggered updates
+- **Project Structure Cleanup**: Removed unused assets directory and updated build references
+  - All images properly organized in `src/images/` directory
+  - Fixed Docker build errors caused by missing assets folder
+  - Updated documentation to reflect actual file structure
 - **Semantic Class Structure**: Added proper CSS classes for modal images and social elements
 - **Global Social Footer**: Fixed HUD-style footer with bracket notation ([LINKEDIN], [FACEBOOK], etc.)
 - **Enhanced Image Classes**: modal-hero-image and project-hero-image for consistent styling

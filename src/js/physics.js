@@ -1,6 +1,8 @@
 // --- BACKGROUND PHYSICS ENGINE ---
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
+
+// Desktop physics variables
 let width, height;
 let particles = [];
 let particleCount = 80;
@@ -13,27 +15,56 @@ let isMobile = false;
 let performanceCheck = 0;
 let lastFrameTime = 0;
 
-// Track mouse position for particle interaction
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
+// Mobile detection function
+function isMobileDevice() {
+    return window.innerWidth <= 768 || 
+           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Initialize mobile mode if detected
+function initializeMobileMode() {
+    console.log('Mobile detected - using static CSS background instead of physics');
+    canvas.style.display = 'none';
+    document.body.classList.add('mobile-static-bg');
+    
+    // Still provide theme switching for CSS background
+    window.updatePhysicsEngine = function(mode) {
+        // No physics to update, but maintain theme switching capability
+        const root = document.documentElement;
+        if (mode === 'technical') {
+            root.style.setProperty('--mobile-bg-primary', '0, 20, 40');
+            root.style.setProperty('--mobile-bg-secondary', '0, 40, 60');
+            root.style.setProperty('--mobile-accent', '0, 240, 255');
+        } else if (mode === 'creative') {
+            root.style.setProperty('--mobile-bg-primary', '20, 15, 10');
+            root.style.setProperty('--mobile-bg-secondary', '40, 25, 15');
+            root.style.setProperty('--mobile-accent', '245, 158, 11');
+        }
+    };
+    
+    // Initialize mobile background theme
+    window.updatePhysicsEngine('technical');
+}
+
+// Track mouse position for particle interaction (desktop only)
+if (!isMobileDevice()) {
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+}
 
 function resize() {
+    // Skip resize for mobile devices as they use CSS background
+    if (isMobileDevice()) return;
+    
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
     
-    // Mobile Optimization Check
-    isMobile = width <= 768;
-    if(isMobile) {
-        particleCount = 20; // Reduced further for mobile
-        mobileSlowdown = 0.3; // Even slower movement
-        connectionDistance = 80; // Shorter connections
-    } else {
-        particleCount = 80;
-        mobileSlowdown = 1;
-        connectionDistance = 100;
-    }
+    // Desktop optimization settings
+    particleCount = 80;
+    mobileSlowdown = 1;
+    connectionDistance = 100;
     
     initParticles();
     performanceCheck = 0; // Reset performance counter
@@ -88,33 +119,10 @@ function initParticles() {
 }
 
 function animateBg() {
-    const currentTime = performance.now();
-    
-    // Mobile performance monitoring
-    if (isMobile) {
-        performanceCheck++;
-        
-        // Check frame rate every 60 frames
-        if (performanceCheck % 60 === 0 && lastFrameTime > 0) {
-            const frameTime = currentTime - lastFrameTime;
-            // If frame time > 20ms (less than 50 FPS), reduce particles further
-            if (frameTime > 20 && particles.length > 10) {
-                particles = particles.slice(0, Math.max(10, particles.length - 5));
-                console.log('Performance degradation detected, reducing particles to:', particles.length);
-            }
-        }
-        
-        // Skip every other frame on mobile for performance
-        if (performanceCheck % 2 === 0) {
-            animationId = requestAnimationFrame(animateBg);
-            return;
-        }
-    }
-    
-    lastFrameTime = currentTime;
+    // This function only runs on desktop now
     ctx.clearRect(0, 0, width, height);
     
-    // Get current accent color from CSS (cache it to reduce DOM queries)
+    // Get current accent color from CSS
     const computedStyle = getComputedStyle(document.body);
     const particleRgb = computedStyle.getPropertyValue('--particle-color').trim();
 
@@ -122,21 +130,18 @@ function animateBg() {
         particles[i].update();
         particles[i].draw(particleRgb);
         
-        // Reduce connection calculations on mobile
-        if (!isMobile || i % 2 === 0) {
-            for(let j=i+1; j<particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx*dx + dy*dy);
-                if(dist < connectionDistance) {
-                    // Dynamic connection line color
-                    ctx.strokeStyle = `rgba(${particleRgb}, ${0.15 - dist/1000})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.stroke();
-                }
+        for(let j=i+1; j<particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx*dx + dy*dy);
+            if(dist < connectionDistance) {
+                // Dynamic connection line color
+                ctx.strokeStyle = `rgba(${particleRgb}, ${0.15 - dist/1000})`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
             }
         }
     }
@@ -160,11 +165,13 @@ window.restartPhysics = function() {
     animateBg();
 };
 
-// Initialize physics
+// Initialize physics system
 window.addEventListener('resize', resize);
 
-// Page visibility optimization - pause physics when page is hidden
+// Page visibility optimization - pause physics when page is hidden (desktop only)
 document.addEventListener('visibilitychange', function() {
+    if (isMobileDevice()) return; // Skip for mobile
+    
     if (document.hidden) {
         if (animationId) {
             cancelAnimationFrame(animationId);
@@ -179,11 +186,30 @@ document.addEventListener('visibilitychange', function() {
 
 // Memory management - cleanup on page unload
 window.addEventListener('beforeunload', function() {
-    window.cleanupPhysics();
+    if (window.cleanupPhysics) {
+        window.cleanupPhysics();
+    }
 });
 
-resize(); // Initial call
-animateBg();
+// Initialize based on device type
+function initPhysicsSystem() {
+    if (isMobileDevice()) {
+        initializeMobileMode();
+        return;
+    }
+    
+    // Desktop initialization
+    console.log('Desktop detected - initializing physics engine');
+    resize(); // Initial call
+    animateBg();
+}
+
+// Wait for DOM to be ready, then initialize
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPhysicsSystem);
+} else {
+    initPhysicsSystem();
+}
 
 // Enhanced physics hook - controls velocity and connections
 window.updatePhysicsEngine = function(mode) {

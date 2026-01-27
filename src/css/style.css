@@ -205,9 +205,39 @@ body.no-scroll .hud-switch {
 
 /* Mobile scroll behavior */
 @media (max-width: 768px) {
+    /* Mobile Static Background - replaces physics canvas */
+    body.mobile-static-bg::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background: 
+            radial-gradient(circle at 20% 20%, rgba(var(--mobile-accent), 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(var(--mobile-accent), 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 60%, rgba(var(--mobile-accent), 0.05) 0%, transparent 50%),
+            linear-gradient(135deg, 
+                rgba(var(--mobile-bg-primary), 1) 0%, 
+                rgba(var(--mobile-bg-secondary), 0.8) 50%,
+                rgba(var(--mobile-bg-primary), 1) 100%);
+        animation: subtle-shift 8s ease-in-out infinite;
+    }
+    
+    /* Subtle background animation */
+    @keyframes subtle-shift {
+        0%, 100% { 
+            background-position: 0% 0%, 100% 100%, 50% 50%, 0% 0%; 
+        }
+        50% { 
+            background-position: 10% 10%, 90% 90%, 60% 40%, 0% 0%; 
+        }
+    }
+    
     /* Performance optimizations for mobile */
     #bg-canvas {
-        opacity: 0.4; /* Reduced opacity for mobile performance */
+        display: none !important; /* Hide physics canvas completely on mobile */
     }
     
     /* Reduce animation complexity on mobile */
