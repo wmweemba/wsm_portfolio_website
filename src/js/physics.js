@@ -32,13 +32,11 @@ function initializeMobileMode() {
         // No physics to update, but maintain theme switching capability
         const root = document.documentElement;
         if (mode === 'technical') {
-            root.style.setProperty('--mobile-bg-primary', '0, 20, 40');
-            root.style.setProperty('--mobile-bg-secondary', '0, 40, 60');
-            root.style.setProperty('--mobile-accent', '0, 240, 255');
+            // Simple black background for technical mode
+            root.style.setProperty('--mobile-bg-primary', '0, 0, 0');
         } else if (mode === 'creative') {
-            root.style.setProperty('--mobile-bg-primary', '20, 15, 10');
-            root.style.setProperty('--mobile-bg-secondary', '40, 25, 15');
-            root.style.setProperty('--mobile-accent', '245, 158, 11');
+            // Simple brown background for creative mode  
+            root.style.setProperty('--mobile-bg-primary', '40, 25, 15');
         }
     };
     
