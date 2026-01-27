@@ -518,14 +518,18 @@ function renderGlobalSocials() {
     
     document.body.insertAdjacentHTML('beforeend', globalCommsHtml);
     
-    // Update labels on window resize
-    window.addEventListener('resize', () => {
-        const globalComms = document.getElementById('global-comms');
-        if (globalComms) {
-            globalComms.remove();
-            renderGlobalSocials();
-        }
-    });
+    // Update labels on window resize (desktop only)
+    if (window.innerWidth > 768) {
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                const globalComms = document.getElementById('global-comms');
+                if (globalComms) {
+                    globalComms.remove();
+                    renderGlobalSocials();
+                }
+            }
+        });
+    }
 }
 
 // --- MOBILE SCROLL NAVIGATION ---
@@ -599,8 +603,6 @@ function initMobileScrollNav() {
 
 // --- INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 The Kinetic Architect - DOM Content Loaded');
-    
     // Cache DOM elements
     scrollerContent = document.getElementById('scroller-content');
     workContainer = document.getElementById('work-container');
@@ -613,28 +615,15 @@ document.addEventListener('DOMContentLoaded', function() {
     btnTech = document.getElementById('btn-tech');
     btnCreative = document.getElementById('btn-creative');
     
-    console.log('🔍 DOM Elements Found:', {
-        scrollerContent: !!scrollerContent,
-        workContainer: !!workContainer,
-        modal: !!modal,
-        backdrop: !!backdrop,
-        mTitle: !!mTitle,
-        mTags: !!mTags,
-        mImage: !!mImage,
-        btnTech: !!btnTech,
-        btnCreative: !!btnCreative
-    });
-    
-    // Initialize features
-    console.log('🎯 Initializing cursor and magnetic buttons...');
+    // Initialize features (mobile-optimized)
     initCustomCursor();
-    initMagneticButtons();
+    if (window.innerWidth > 768) {
+        initMagneticButtons();
+    }
     initMobileScrollNav();
     renderGlobalSocials();
     
     // Init default content
-    console.log('🎨 Rendering initial technical content...');
-    renderContent('technical');
     renderContent('technical');
     
     // Toggle Listeners
@@ -651,6 +640,6 @@ document.addEventListener('DOMContentLoaded', function() {
         btnTech.classList.remove('active');
         renderContent('creative');
     });
-    
-    console.log('✅ Initialization complete!');
 });
+
+// END OF APP.JS - MOBILE OPTIMIZED

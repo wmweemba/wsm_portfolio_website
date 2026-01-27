@@ -23,7 +23,6 @@ function isMobileDevice() {
 
 // Initialize mobile mode if detected
 function initializeMobileMode() {
-    console.log('Mobile detected - using static CSS background instead of physics');
     canvas.style.display = 'none';
     document.body.classList.add('mobile-static-bg');
     
