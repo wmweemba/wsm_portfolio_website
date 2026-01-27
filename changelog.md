@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
+- **Chrome Mobile Address Bar Fix**: Resolve viewport height issues when Chrome address bar shows/hides
+  - **Dynamic Viewport Units**: Replace `100vh` with `100dvh` (dynamic) and `100lvh` (large) fallbacks
+  - **Modal Optimizations**: Fix modal height and scroll behavior for Chrome mobile address bar changes
+  - **Scroll Lock Enhancement**: Proper body position fixing and overscroll behavior for modals
+  - **Viewport Width Fix**: Use `100dvw` for consistent width handling across browsers
+  - **Touch Scrolling**: Add `-webkit-overflow-scrolling: touch` for smooth mobile scrolling
+  - **Chrome-Specific**: Target Chrome's dynamic address bar behavior while maintaining Safari compatibility
 - **CRITICAL: Mobile Memory Leak Prevention (Option A)**: Aggressive mobile cleanup to eliminate progressive performance degradation
   - **Console Logging Removal**: Eliminated all 20+ console.log statements that were causing memory pressure
   - **Event Listener Optimization**: Mobile-only event listeners with proper cleanup and conditional initialization

@@ -99,7 +99,10 @@ main {
 }
 
 header {
-    height: 100vh;
+    /* Chrome mobile address bar fix */
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height for modern browsers */
+    min-height: 100lvh; /* Large viewport height as fallback */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -235,6 +238,26 @@ body.no-scroll .hud-switch {
         text-rendering: optimizeSpeed;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Chrome mobile modal fixes */
+    body.no-scroll {
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+        overflow: hidden !important;
+    }
+    
+    /* Chrome address bar scroll behavior fix */
+    .project-modal {
+        /* Prevent Chrome address bar issues in modals */
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        /* Fix modal height on Chrome mobile */
+        height: 100vh !important;
+        height: 100dvh !important;
+        max-height: 100vh;
+        max-height: 100dvh;
     }
     
     .hud-switch {
@@ -375,8 +398,11 @@ body.no-scroll .hud-switch {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    /* Chrome mobile address bar fix */
+    width: 100vw; /* Fallback */
+    width: 100dvw; /* Dynamic viewport width */
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height */
     background: rgba(0,0,0,0.6);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -397,7 +423,9 @@ body.no-scroll .hud-switch {
     right: 0;
     width: 100%;
     max-width: 700px;
-    height: 100vh;
+    /* Chrome mobile address bar fix */
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height */
     background: var(--bg);
     border-left: 1px solid var(--accent);
     z-index: 2000;
@@ -406,6 +434,10 @@ body.no-scroll .hud-switch {
     padding: 80px 5vw;
     overflow-y: auto;
     box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    /* Chrome mobile scroll lock enhancement */
+    -webkit-overflow-scrolling: touch;
+    /* Chrome mobile scroll lock enhancement */
+    -webkit-overflow-scrolling: touch;
 }
 
 .project-modal.active {
