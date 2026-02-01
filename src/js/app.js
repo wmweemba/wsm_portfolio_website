@@ -27,18 +27,24 @@ const data = {
         `,
         items: [
             { 
-                title: "Head of ICT", 
-                company: "Financial Institution",
-                tags: ["[Banking Systems]", "[ITIL ITSM]", "[High Availability]"], 
-                desc: "Leading enterprise digital transformation, Core Banking Migrations, and Disaster Recovery protocols.",
-                image: "./src/images/core-banking.jpeg",
+                title: "Nexus Consulting Services", 
+                company: "CEO & Founder",
+                tags: ["[ICT Consultancy]", "[Network Infrastructure]", "[Managed Services]"], 
+                desc: "Founded in 2017, providing high-quality digital solutions to SMEs and large organizations across Zambia.",
+                image: "./src/images/nexus-tech.jpeg",
+                socials: [
+                    { label: 'Website', url: 'https://mynexusgroup.com/' },
+                    { label: 'LinkedIn', url: 'https://www.linkedin.com/company/nexus-consulting-zambia/' },
+                    { label: 'Facebook', url: 'https://www.facebook.com/NexusGroupZambia/' }
+                ],
                 longDesc: `
-                    <p>Strategic leadership over banking infrastructure and policy.</p>
+                    <p>CEO and Founder of Nexus Consulting Services Limited - "Your missing link to achieve your goals."</p>
                     <ul>
-                        <li><strong>Core Banking Migration:</strong> Orchestrated end-to-end migration with zero data loss and minimal downtime.</li>
-                        <li><strong>Infrastructure:</strong> Managed hybrid server environments servicing 30+ branches with over 95% service availability.</li>
-                        <li><strong>Cost Reduction:</strong> Reduced operational IT costs by 15% through innovative solutions and vendor negotiation.</li>
-                        <li><strong>Governance & Policy:</strong> Authored and implemented enduring enterprise policies (including Disaster Recovery & Data Protection) that continue to govern daily operations.</li>
+                        <li><strong>Company Vision:</strong> Founded in 2017 to bridge the technology gap for Zambian businesses with expertise in telecommunications, networking, and collaboration solutions.</li>
+                        <li><strong>Service Portfolio:</strong> Call center implementation, ICT consultancy, network infrastructure, outsourced IT departments, and managed services.</li>
+                        <li><strong>Client Base:</strong> Serving major clients including Madison Insurance, Vision Fund Zambia, and Zambia National Building Society with enterprise-grade solutions.</li>
+                        <li><strong>Strategic Partnerships:</strong> Authorized partner with Sophos, 3CX, Bitrix24, Juniper Networks, HP, and Lenovo for comprehensive technology solutions.</li>
+                        <li><strong>Mission:</strong> Delivering quality products and services at affordable costs while maintaining the highest levels of customer satisfaction.</li>
                     </ul>
                 `
             },
@@ -87,24 +93,18 @@ const data = {
                 `
             },
             { 
-                title: "Nexus Consulting Services", 
-                company: "CEO & Founder",
-                tags: ["[ICT Consultancy]", "[Network Infrastructure]", "[Managed Services]"], 
-                desc: "Founded in 2017, providing high-quality digital solutions to SMEs and large organizations across Zambia.",
-                image: "./src/images/nexus-tech.jpeg",
-                socials: [
-                    { label: 'Website', url: 'https://mynexusgroup.com/' },
-                    { label: 'LinkedIn', url: 'https://www.linkedin.com/company/nexus-consulting-zambia/' },
-                    { label: 'Facebook', url: 'https://www.facebook.com/NexusGroupZambia/' }
-                ],
+                title: "Head of ICT", 
+                company: "Financial Institution",
+                tags: ["[Banking Systems]", "[ITIL ITSM]", "[High Availability]"], 
+                desc: "Leading enterprise digital transformation, Core Banking Migrations, and Disaster Recovery protocols.",
+                image: "./src/images/core-banking.jpeg",
                 longDesc: `
-                    <p>CEO and Founder of Nexus Consulting Services Limited - "Your missing link to achieve your goals."</p>
+                    <p>Strategic leadership over banking infrastructure and policy.</p>
                     <ul>
-                        <li><strong>Company Vision:</strong> Founded in 2017 to bridge the technology gap for Zambian businesses with expertise in telecommunications, networking, and collaboration solutions.</li>
-                        <li><strong>Service Portfolio:</strong> Call center implementation, ICT consultancy, network infrastructure, outsourced IT departments, and managed services.</li>
-                        <li><strong>Client Base:</strong> Serving major clients including Madison Insurance, Vision Fund Zambia, and Zambia National Building Society with enterprise-grade solutions.</li>
-                        <li><strong>Strategic Partnerships:</strong> Authorized partner with Sophos, 3CX, Bitrix24, Juniper Networks, HP, and Lenovo for comprehensive technology solutions.</li>
-                        <li><strong>Mission:</strong> Delivering quality products and services at affordable costs while maintaining the highest levels of customer satisfaction.</li>
+                        <li><strong>Core Banking Migration:</strong> Orchestrated end-to-end migration with zero data loss and minimal downtime.</li>
+                        <li><strong>Infrastructure:</strong> Managed hybrid server environments servicing 30+ branches with over 95% service availability.</li>
+                        <li><strong>Cost Reduction:</strong> Reduced operational IT costs by 15% through innovative solutions and vendor negotiation.</li>
+                        <li><strong>Governance & Policy:</strong> Authored and implemented enduring enterprise policies (including Disaster Recovery & Data Protection) that continue to govern daily operations.</li>
                     </ul>
                 `
             }

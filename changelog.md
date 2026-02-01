@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Portfolio Ordering**: Swapped positions of "Head of ICT" and "Nexus Consulting Services" in technical section
+  - Nexus Consulting Services now appears first (CEO & Founder position highlighted)
+  - Head of ICT moved to later position in technical portfolio sequence
+  - Maintains chronological and strategic importance flow
+
 ### Fixed
 - **Chrome Mobile Address Bar Fix**: Resolve viewport height issues when Chrome address bar shows/hides
   - **Dynamic Viewport Units**: Replace `100vh` with `100dvh` (dynamic) and `100lvh` (large) fallbacks
