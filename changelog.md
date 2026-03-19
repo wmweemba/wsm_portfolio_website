@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **HabitPunch App — Portfolio Entry**: Added freshly-launched Android app to both Creative and Technical sections
+  - **Creative section**: New item at index 0 (featured first) — product launch angle, Google Play social link
+  - **Technical section**: New item after Full-Stack Engineer — engineering/Power Learn Project angle
+  - Image: `src/images/habitpunch-app.png`
+  - Play Store link: `https://play.google.com/store/apps/details?id=com.habitpunch.app`
+- **WebP Image Optimisation**: Converted all 14 images to WebP, saving ~4.5MB total
+  - `cert-mern.png`: 1.5MB → 92KB (94% smaller)
+  - `habitpunch-app.png`: 458KB → 16KB (96% smaller)
+  - `favicon.png`: resized to 32×32px (2.7KB) then converted to favicon.webp (0.4KB, 85% smaller)
+  - All other images: 17–78% smaller on average
+  - Modal `<img>` tags wrapped in `<picture>` element — browser serves WebP automatically, original JPEG/PNG used as fallback
+  - `decoding="async"` added to all modal images — prevents image decode from blocking modal slide animation
+  - Conversion script: `npm run images` (uses `sharp` devDependency, runs `scripts/convert-images.mjs`)
+  - Original files preserved in `src/images/` alongside `.webp` counterparts
+
 ### Changed
 - **Portfolio Ordering**: Swapped positions of "Head of ICT" and "Nexus Consulting Services" in technical section
   - Nexus Consulting Services now appears first (CEO & Founder position highlighted)

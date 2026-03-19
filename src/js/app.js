@@ -78,6 +78,25 @@ const data = {
                     </ul>
                 `
             },
+            {
+                title: "HabitPunch — Mobile App",
+                company: "Power Learn Project · Self-Built",
+                tags: ["[Android Dev]", "[Mobile App]", "[Google Play]"],
+                desc: "Self-built Android habit-tracker app, applying full-stack skills learned through Power Learn Project and shipping a live product to Google Play.",
+                image: "./src/images/habitpunch-app.png",
+                socials: [
+                    { label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.habitpunch.app' }
+                ],
+                longDesc: `
+                    <p>A real-world coding milestone — a live Android app built and shipped independently.</p>
+                    <ul>
+                        <li><strong>Skills Applied:</strong> Put Power Learn Project training to the test by designing, coding, and deploying a production mobile application.</li>
+                        <li><strong>Product:</strong> HabitPunch — an Android habit tracker with a visual punch card system for daily routine building.</li>
+                        <li><strong>Delivery:</strong> End-to-end ownership from UI/UX to Play Store submission and live deployment.</li>
+                        <li><strong>Platform:</strong> Android — available on Google Play Store.</li>
+                    </ul>
+                `
+            },
             { 
                 title: "Digital Finance", 
                 company: "CDFP Certified",
@@ -156,6 +175,25 @@ const data = {
                         <li><strong>Formulation:</strong> Hand-crafted blend using Cold-Pressed Sweet Almond Oil and Organic Peppermint.</li>
                         <li><strong>Growth:</strong> Achieved 30% MoM sales growth in Q1 via social commerce.</li>
                         <li><strong>Retail:</strong> Negotiated shelf space in 3 independent beauty outlets in Lusaka.</li>
+                    </ul>
+                `
+            },
+            {
+                title: "HabitPunch",
+                company: "Founder & Developer",
+                tags: ["[Android App]", "[Habit Tracking]", "[Product Launch]"],
+                desc: "Transform your life with HabitPunch — an Android habit tracker built around a visual punch card system that makes building lasting daily habits fun and effortless.",
+                image: "./src/images/habitpunch-app.png",
+                socials: [
+                    { label: 'Google Play', url: 'https://play.google.com/store/apps/details?id=com.habitpunch.app' }
+                ],
+                longDesc: `
+                    <p>A fully-shipped Android product — from concept to Google Play Store.</p>
+                    <ul>
+                        <li><strong>Product:</strong> Habit-tracking app with a visual punch card mechanic to build and sustain daily routines — covering fitness, productivity, and wellness goals.</li>
+                        <li><strong>Platform:</strong> Native Android app, published on the Google Play Store.</li>
+                        <li><strong>Launch:</strong> End-to-end ownership — product idea, UX design, development, and Play Store submission.</li>
+                        <li><strong>Mission:</strong> Make habit-building fun and visual so users stay consistent and achieve their goals effortlessly.</li>
                     </ul>
                 `
             },
@@ -369,7 +407,8 @@ window.openProject = function(index) {
             imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 8px;';
         }
         
-        mImage.innerHTML = `<img src="${item.image}" alt="${item.title} - William Mweemba Portfolio" class="project-hero-image" style="${imageStyle}">`;
+        const webpSrc = item.image.replace(/\.(jpeg|jpg|png)$/, '.webp');
+        mImage.innerHTML = `<picture><source srcset="${webpSrc}" type="image/webp"><img src="${item.image}" alt="${item.title} - William Mweemba Portfolio" class="project-hero-image" style="${imageStyle}" decoding="async" loading="lazy"></picture>`;
     } else if (mImage) {
         mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
     }
@@ -438,7 +477,8 @@ window.openAboutModal = function() {
     if (aboutData.image && mImage) {
         const imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 8px;';
         const modalTitle = currentMode === 'technical' ? 'Technical Background' : 'Creative Philosophy';
-        mImage.innerHTML = `<img src="${aboutData.image}" alt="${modalTitle} - William Mweemba" class="modal-hero-image" style="${imageStyle}">`;
+        const webpSrc = aboutData.image.replace(/\.(jpeg|jpg|png)$/, '.webp');
+        mImage.innerHTML = `<picture><source srcset="${webpSrc}" type="image/webp"><img src="${aboutData.image}" alt="${modalTitle} - William Mweemba" class="modal-hero-image" style="${imageStyle}" decoding="async" loading="lazy"></picture>`;
     } else if (mImage) {
         mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
     }

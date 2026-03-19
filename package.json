@@ -7,13 +7,20 @@
     "dev": "live-server --port=3000 --entry-file=index.html",
     "start": "live-server --port=3000 --entry-file=index.html",
     "build": "echo 'Building static site...' && cp -r src index.html dist/ 2>/dev/null || echo 'Static site ready for deployment'",
+    "images": "node scripts/convert-images.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["portfolio", "kinetic", "canvas", "physics"],
+  "keywords": [
+    "portfolio",
+    "kinetic",
+    "canvas",
+    "physics"
+  ],
   "author": "William Mweemba",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "live-server": "^1.2.2"
+    "live-server": "^1.2.2",
+    "sharp": "^0.33.5"
   }
 }
