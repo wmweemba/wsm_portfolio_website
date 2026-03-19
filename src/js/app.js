@@ -408,7 +408,7 @@ window.openProject = function(index) {
         }
         
         const webpSrc = item.image.replace(/\.(jpeg|jpg|png)$/, '.webp');
-        mImage.innerHTML = `<picture><source srcset="${webpSrc}" type="image/webp"><img src="${item.image}" alt="${item.title} - William Mweemba Portfolio" class="project-hero-image" style="${imageStyle}" decoding="async" loading="lazy"></picture>`;
+        mImage.innerHTML = `<picture style="display:block;width:100%;height:100%;"><source srcset="${webpSrc}" type="image/webp"><img src="${item.image}" alt="${item.title} - William Mweemba Portfolio" class="project-hero-image" style="${imageStyle}" decoding="async" loading="lazy"></picture>`;
     } else if (mImage) {
         mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
     }
@@ -478,7 +478,7 @@ window.openAboutModal = function() {
         const imageStyle = 'width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 8px;';
         const modalTitle = currentMode === 'technical' ? 'Technical Background' : 'Creative Philosophy';
         const webpSrc = aboutData.image.replace(/\.(jpeg|jpg|png)$/, '.webp');
-        mImage.innerHTML = `<picture><source srcset="${webpSrc}" type="image/webp"><img src="${aboutData.image}" alt="${modalTitle} - William Mweemba" class="modal-hero-image" style="${imageStyle}" decoding="async" loading="lazy"></picture>`;
+        mImage.innerHTML = `<picture style="display:block;width:100%;height:100%;"><source srcset="${webpSrc}" type="image/webp"><img src="${aboutData.image}" alt="${modalTitle} - William Mweemba" class="modal-hero-image" style="${imageStyle}" decoding="async" loading="lazy"></picture>`;
     } else if (mImage) {
         mImage.innerHTML = '// PROJECT_ASSET_LOADED //';
     }

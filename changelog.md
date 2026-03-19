@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **WebP modal image overflow fix**: Resolved image overflow/overlap in modals after `<picture>` element wrapping
+  - Root cause: `<picture>` is `display: inline` by default — `height: 100%` on child `<img>` resolved to `auto` (intrinsic image height) instead of the 300px container height, causing portrait images (e.g. Mfumu Grooming at 788×1080) to overflow
+  - Fix 1 (JS): Added `style="display:block;width:100%;height:100%;"` inline on both `<picture>` injections — height now correctly inherits from the 300px flex container
+  - Fix 2 (CSS): Added `overflow: hidden` to `.modal-image-placeholder` — hard containment guard for any future overflow edge cases
+  - Fix 3 (CSS): Added `height: 100%; object-fit: cover; display: block` to `.modal-hero-image, .project-hero-image` class rule — previously only `width: 100%` and `border-radius` were set
 - **HabitPunch App — Portfolio Entry**: Added freshly-launched Android app to both Creative and Technical sections
   - **Creative section**: New item at index 0 (featured first) — product launch angle, Google Play social link
   - **Technical section**: New item after Full-Stack Engineer — engineering/Power Learn Project angle
