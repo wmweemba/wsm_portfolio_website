@@ -416,12 +416,18 @@ window.openProject = function(index) {
     // Show
     modal.classList.add('active');
     backdrop.classList.add('active');
+    modal.removeAttribute('inert');
+    modal.setAttribute('aria-hidden', 'false');
+    backdrop.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll');
 }
 
 window.closeProject = function() {
     modal.classList.remove('active');
     backdrop.classList.remove('active');
+    modal.setAttribute('inert', '');
+    modal.setAttribute('aria-hidden', 'true');
+    backdrop.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('no-scroll');
     
     // Mobile performance optimization - cleanup modal content after closing
@@ -486,6 +492,9 @@ window.openAboutModal = function() {
     // Show Modal
     modal.classList.add('active');
     backdrop.classList.add('active');
+    modal.removeAttribute('inert');
+    modal.setAttribute('aria-hidden', 'false');
+    backdrop.setAttribute('aria-hidden', 'false');
     document.body.classList.add('no-scroll');
 }
 

@@ -100,20 +100,14 @@
     </main>
 
     <!-- MODAL ELEMENTS -->
-    <div class="modal-backdrop" id="modal-backdrop" onclick="closeProject()"></div>
-    <aside id="project-modal" class="project-modal">
+    <div class="modal-backdrop" id="modal-backdrop" onclick="closeProject()" aria-hidden="true"></div>
+    <aside id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-hidden="true" inert>
         <div class="close-btn" onclick="closeProject()" onmouseenter="hoverEffect(true)" onmouseleave="hoverEffect(false)">×</div>
         <div class="modal-content-wrapper">
-            <h2 class="modal-title" id="m-title">Project Title</h2>
-            <div class="modal-tags" id="m-tags">
-                <span>[Tag 1]</span> <span>[Tag 2]</span>
-            </div>
-            <div class="modal-image-placeholder">
-                // PROJECT_ASSET_LOADED //
-            </div>
-            <div class="modal-body" id="m-body">
-                Project details go here...
-            </div>
+            <h2 class="modal-title" id="m-title"></h2>
+            <div class="modal-tags" id="m-tags"></div>
+            <div class="modal-image-placeholder"></div>
+            <div class="modal-body" id="m-body"></div>
         </div>
     </aside>
 

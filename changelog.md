@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Closed project modal exposed to accessibility tree / text extraction**: `#project-modal` was only ever hidden visually (`transform: translateX(100%)`), never removed from the DOM's accessible tree — so its unpopulated placeholder markup ("Project Title", "[Tag 1]", `// PROJECT_ASSET_LOADED //`, "Project details go here...") was readable by screen readers and any tool that extracts page text/accessibility structure, even though sighted users never saw it (confirmed via computed-style check: fully off-screen at all times when closed)
+  - Fix (HTML): Modal and its backdrop now start with `aria-hidden="true"` and `inert`; modal also gets `role="dialog" aria-modal="true"`. Static placeholder text removed from the closed-state markup — `#m-title`, `#m-tags`, `.modal-image-placeholder`, `#m-body` now render empty until JS populates them
+  - Fix (JS): `openProject()` and `openAboutModal()` clear `inert` and set `aria-hidden="false"` on open; `closeProject()` restores `inert` and `aria-hidden="true"` on close, alongside the existing `.active` class toggle
+  - Verified locally: closed state has no placeholder text and is `inert`/`aria-hidden`; opening a project card still populates and slides in the panel correctly with no console errors; closing resets cleanly
+
 ### Added
 - **WebP modal image overflow fix**: Resolved image overflow/overlap in modals after `<picture>` element wrapping
   - Root cause: `<picture>` is `display: inline` by default — `height: 100%` on child `<img>` resolved to `auto` (intrinsic image height) instead of the 300px container height, causing portrait images (e.g. Mfumu Grooming at 788×1080) to overflow
